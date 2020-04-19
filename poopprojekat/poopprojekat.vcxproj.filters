@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\operations">
+      <UniqueIdentifier>{b534aa05-123e-4674-b3e8-69f860c6f289}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Piksel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaPostojiKljuc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPzaglavlje.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DIBzaglavlje.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NizPiksela.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPcitac.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="korisno.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPwriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="operacije.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pravougaonik.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Selekcija.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dibzaglavlje1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPzaglavlje1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Add.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="ioperation.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Sub.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Mul.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Div.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="DivInvert.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Push.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="SubInvert.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Absolute.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Pow.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Min.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Max.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Inverzija.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Siva.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Crnobela.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Timotije.h">
+      <Filter>Header Files\operations</Filter>
+    </ClInclude>
+    <ClInclude Include="pamcitac.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pamwriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pamheder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
