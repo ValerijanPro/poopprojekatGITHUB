@@ -32,19 +32,24 @@ public:
 		ispisiString(&file, pamheder.endhdr);
 		Layer* novi = (lejer->IzvrsiMedijanu());
 		//lejer = novi;
+
+		
+		std::vector<ioperation*> niz;
+		niz.push_back(&Push(0));
+		niz.push_back(&Crnobela());
 /*
 		file.close();
 		file.write((char*)& pamheder, sizeof(pamheder));
 		file.close();*/
 
-		Pravougaonik kvadrat2 = Pravougaonik(0, 0, 100, 100);
-		//Pravougaonik kvadrat3 = Pravougaonik(0, 0, 750, 450);
+		Pravougaonik kvadrat2 = Pravougaonik(300,300, 50, 50);
+		Pravougaonik kvadrat3 = Pravougaonik(0, 0, 50, 50);
 		pravougaonici pp;
 		/*pp.push_back(kvadrat1);
 		pp.push_back(kvadrat2);*/
 		//pp.push_back(kvadrat1);
 		pp.push_back(kvadrat2);
-		//pp.push_back(kvadrat3);
+		pp.push_back(kvadrat3);
 		Selekcija se = Selekcija("Nekatamo", pp);
 		bool state = 1;
 		Piksel p2;
@@ -52,13 +57,27 @@ public:
 		int x = 0, y = 0;
 		long long int paja = 0;
 		for (int j = lejer->getvisina() - 1; j >= 0; j--) {
-			for (int i = 0; i < lejer->getSirina(); i++) {
-				Piksel* p1 = &lejer->getPixel(i, j);
-				if (se.USelekciji(i, j)) {
-					std::cout << "i:" << i << ", j:" << j << std::endl;
-					p1->oboji(0xFF, 0xFF, 0x00);
-				}
 
+			for (int i = 0; i < lejer->getSirina(); i++) {
+				
+				Piksel* p1 = &lejer->getPixel(i, j);
+				NoviPiksel p3 = NoviPiksel(*p1);
+				argumenti ar = { p3 };
+				
+				stek s;
+				//if (se.USelekciji(i, j)) {
+				//	//std::cout << "i:" << i << ", j:" << j << std::endl;
+				//	p1->oboji(0xFF, 0xFF, 0x00);
+				//}
+
+
+				for (auto i : niz) {
+					i->run(s, ar);
+				}
+				NoviPiksel p4 = s.top();
+				s.pop();
+				p1 = &p4.getPiksel();
+				ar.pop_back();
 				char temp;
 				temp = p1->getB();
 				file.write((char*)& temp, sizeof(temp));
