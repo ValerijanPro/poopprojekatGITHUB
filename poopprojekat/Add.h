@@ -14,9 +14,9 @@ public:
 	void run(stek& s, argumenti arg) {
 		Piksel p1 = s.top();
 		s.pop();
-		char r = p1.getR();		
-		char g = p1.getG();
-		char b = p1.getB();
+		int r = p1.getR();		
+		int g = p1.getG();
+		int b = p1.getB();
 		char op = p1.getOpacity();
 		r = (r + broj) % 256;
 		g = (g + broj) % 256;
