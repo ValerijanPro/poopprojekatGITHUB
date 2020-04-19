@@ -13,16 +13,16 @@ public:
 
 	Pow(int b) :broj(b) {}
 	void run(stek& s, argumenti arg) {
-		Piksel p1 = s.top();
+		NoviPiksel p1 = s.top();
 		s.pop();
-		char r = p1.getR();
-		char g = p1.getG();
-		char b = p1.getB();
-		char op = p1.getOpacity();
-		r = (char)(std::pow(r,broj)) % 256;
-		g = (char)(std::pow(g, broj)) % 256;
-		b = (char)(std::pow(b, broj)) % 256;
-		Piksel p2 = Piksel(r, g, b, 0, op);
+		int r = p1.getR();
+		int g = p1.getG();
+		int b = p1.getB();
+		int op = p1.getOpacity();
+		r = (std::pow(r, broj));
+		g = (std::pow(g, broj));
+		b = (std::pow(b, broj));
+		NoviPiksel p2 = NoviPiksel(r, g, b,op);
 		s.push(p2);
 	}
 };

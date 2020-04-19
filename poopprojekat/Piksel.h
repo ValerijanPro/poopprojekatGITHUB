@@ -23,6 +23,7 @@ public:
 	char getB() const { return b; }
 	char getOpacity() const { return opacity; }
 	short getOffset() const { return offset; }
+	//i funkcija koja vraca obican piksel
 	/*Piksel& Pocrni() {
 		r = 0;
 		g = 0;

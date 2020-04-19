@@ -15,16 +15,16 @@ public:
 	DivInvert(int b) :broj(b) {}
 	void run(stek& s, argumenti arg) {
 		if (broj == 0) throw GreskaPostojiKljuc("Nije dozvoljeno deljenje nulom!");
-		Piksel p1 = s.top();
+		NoviPiksel p1 = s.top();
 		s.pop();
-		char r = p1.getR();
-		char g = p1.getG();
-		char b = p1.getB();
-		char op = p1.getOpacity();
-		r = (broj / r) % 256;
-		g = (broj / g) % 256;
-		b = (broj / b) % 256;
-		Piksel p2 = Piksel(r, g, b, 0, op);
+		int r = p1.getR();
+		int g = p1.getG();
+		int b = p1.getB();
+		int op = p1.getOpacity();
+		r = (broj / r) ;
+		g = (broj / g);
+		b = (broj / b);
+		NoviPiksel p2 = NoviPiksel(r, g, b, op);
 		s.push(p2);
 	}
 };

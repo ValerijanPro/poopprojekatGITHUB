@@ -15,16 +15,16 @@ public:
 
 	Max(int b) :broj(b) {}
 	void run(stek& s, argumenti arg) {
-		Piksel p1 = s.top();
+		NoviPiksel p1 = s.top();
 		s.pop();
-		char r = p1.getR();
-		char g = p1.getG();
-		char b = p1.getB();
-		char op = p1.getOpacity();
+		int r = p1.getR();
+		int g = p1.getG();
+		int b = p1.getB();
+		int op = p1.getOpacity();
 		if (r < broj)r = broj;
 		if (g < broj) g = broj;
 		if (b < broj) b = broj;
-		Piksel p2 = Piksel(r, g, b, 0, op);
+		NoviPiksel p2 = NoviPiksel(r, g, b,  op);
 		s.push(p2);
 	}
 };

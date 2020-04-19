@@ -128,5 +128,8 @@
     <ClInclude Include="pamheder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="NoviPiksel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

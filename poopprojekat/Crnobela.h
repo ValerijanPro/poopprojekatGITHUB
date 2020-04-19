@@ -15,12 +15,12 @@ public:
 
 	Crnobela(int b) :broj(b) {}
 	void run(stek& s, argumenti arg) {
-		Piksel p1 = s.top();
+		NoviPiksel p1 = s.top();
 		s.pop();
-		char r = p1.getR();
-		char g = p1.getG();
-		char b = p1.getB();
-		char op = p1.getOpacity();
+		int r = p1.getR();
+		int g = p1.getG();
+		int b = p1.getB();
+		int op = p1.getOpacity();
 		uint32_t x = ((uint32_t)r + (uint32_t)g + (uint32_t)b) / 3;
 		x = x % 256;
 
@@ -36,7 +36,7 @@ public:
 			g = 255;
 		}
 
-		Piksel p2 = Piksel(r, g, b, 0, op);
+		NoviPiksel p2 = NoviPiksel(r, g, b,  op);
 		s.push(p2);
 	}
 };

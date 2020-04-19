@@ -117,12 +117,13 @@ private:
 		s.brlejera = 0;
 	}
 	void brisi() {
-
+		layers.clear();
 		//PROBLEM S BRISANJEM ILI OK?
-		for (auto i = layers.begin(); i != layers.end(); i++) {
-			i = layers.erase(i);
+		/*for (auto i = m.begin(); i !=m.end(); i++) {
+			m.erase(i);
 
-		}
+
+		}*/
 
 		sirina = 0;
 		visina = 0;

@@ -17,11 +17,11 @@ public:
 
 	Inverzija(int b) :broj(b) {}
 	void run(stek& s, argumenti arg) {
-		Piksel p1 = s.top();
+		NoviPiksel p1 = s.top();
 		
-		char r = p1.getR();
-		char g = p1.getG();
-		char b = p1.getB();
+		int r = p1.getR();
+		int g = p1.getG();
+		int b = p1.getB();
 		int x = maximum(r, g, b);
 		Sub ss = Sub(x);
 		ss.run(s, arg);

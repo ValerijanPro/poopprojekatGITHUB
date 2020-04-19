@@ -6,13 +6,14 @@
 #include<algorithm>
 #include"GreskaPostojiKljuc.h"
 #include"korisno.h"
-#include"Piksel.h"
+#include"NoviPiksel.h"
 #include<stack>
 //typedef stack
 //typedef operations
-typedef std::stack <Piksel>stek;
-typedef std::vector<Piksel> argumenti;
+typedef std::stack <NoviPiksel>stek; //NoviPiksel
+typedef std::vector<NoviPiksel> argumenti;//NoviPiksel
  class ioperation {
+	 
 public:
 	virtual void run(stek& s,argumenti arg)=0; // prosledim stack i ARGUMENTS
 };

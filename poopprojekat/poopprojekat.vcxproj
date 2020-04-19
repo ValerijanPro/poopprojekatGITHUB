@@ -149,6 +149,7 @@
     <ClInclude Include="Min.h" />
     <ClInclude Include="Mul.h" />
     <ClInclude Include="NizPiksela.h" />
+    <ClInclude Include="NoviPiksel.h" />
     <ClInclude Include="operacije.h" />
     <ClInclude Include="pamcitac.h" />
     <ClInclude Include="pamheder.h" />
