@@ -43,13 +43,13 @@ public:
 		maxval = GetBroj(pamheder.maxval);
 		brbajtova = BrBajtova(maxval);
 		dubina = GetBroj(pamheder.dubina);
-		Layer l = Layer(sirina, visina);
+		Layer *l = new Layer(sirina, visina);
 		int paja = 0;
 		std::cout << binarnifajl.width();
 		//binarnifajl.seekg(66968);
 		if (brbajtova == 1) {//1 bajt po boji
 			if (dubina == 3) {
-				for (int j = visina - 1; j >= 0; j--) { // uslovi za dubinu za citanje OK !
+				for (int j = 0; j < visina; j++) { // uslovi za dubinu za citanje OK !
 					for (int i = 0; i < sirina; i++) {
 						uint8_t temp;
 						paja++;
@@ -60,21 +60,21 @@ public:
 						binarnifajl.read((char*)& temp, sizeof(temp));
 						
 						temp = SkalirajNa(temp, maxval, 255);
-						char blue = temp;
+						char red = temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
 						temp = SkalirajNa(temp, maxval, 255);
 						char green = temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
 						temp = SkalirajNa(temp, maxval, 255);
-						char red = temp;
+						char blue = temp;
 						//binarnifajl.read((char*)& temp, sizeof(temp));
 						/*	char opacity = temp;*/
-						l.overwritepixel(i, j, Piksel(red, green, blue, 0, 0));
+						l->overwritepixel(i, j, Piksel(red, green, blue, 0, 0));
 					}
 				}
 			}
 			else if (dubina == 4) {
-				for (int j = visina - 1; j >= 0; j--) { // uslovi za dubinu za citanje OK !
+				for (int j = 0; j <visina; j++) { // uslovi za dubinu za citanje OK !
 					for (int i = 0; i < sirina; i++) {
 						char temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
@@ -89,13 +89,13 @@ public:
 						binarnifajl.read((char*)& temp, sizeof(temp));
 						temp = SkalirajNa(temp, maxval, 255);
 						char opacity = temp;
-						l.overwritepixel(i, j, Piksel(red, green, blue, 0, opacity));
+						l->overwritepixel(i, j, Piksel(red, green, blue, 0, opacity));
 					}
 				}
 			}
 
 			else if (dubina==1){// kad je crnobelo
-				for (int j = visina - 1; j >= 0; j--) { 
+				for (int j = 0; j< visina; j++) { 
 					for (int i = 0; i < sirina; i++) {
 						char temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
@@ -103,15 +103,15 @@ public:
 						//binarnifajl.read((char*)& temp, sizeof(temp));
 						/*	char opacity = temp;*/
 						if(temp==0)
-							l.overwritepixel(i, j, Piksel(0, 0, 0, 0, 0));
+							l->overwritepixel(i, j, Piksel(0, 0, 0, 0, 0));
 						else {
-							l.overwritepixel(i, j, Piksel(255, 255, 255, 0, 0));
+							l->overwritepixel(i, j, Piksel(255, 255, 255, 0, 0));
 						}
 					}
 				}
 			} 
 			else if (dubina == 2) { //crnobelo sa opacity
-				for (int j = visina - 1; j >= 0; j--) { 
+				for (int j = 0; j <visina; j++) { 
 					for (int i = 0; i < sirina; i++) {
 						char temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
@@ -121,9 +121,9 @@ public:
 						binarnifajl.read((char*)& opacity, sizeof(opacity));
 						temp = SkalirajNa(temp, maxval, 255);
 						if (temp == 0)
-							l.overwritepixel(i, j, Piksel(0, 0, 0, 0, opacity));
+							l->overwritepixel(i, j, Piksel(0, 0, 0, 0, opacity));
 						else {
-							l.overwritepixel(i, j, Piksel(255, 255, 255, 0, opacity));
+							l->overwritepixel(i, j, Piksel(255, 255, 255, 0, opacity));
 						}
 					}
 				}
@@ -131,7 +131,7 @@ public:
 		}
 		else { // kad po 2 bajta po boji
 			if (dubina == 3) {
-				for (int j = visina - 1; j >= 0; j--) { // uslovi za dubinu za citanje OK !
+				for (int j =0; j<visina; j++) { // uslovi za dubinu za citanje OK !
 					for (int i = 0; i < sirina; i++) {
 						short temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
@@ -145,12 +145,12 @@ public:
 						char red = temp;
 						//binarnifajl.read((char*)& temp, sizeof(temp));
 						/*	char opacity = temp;*/
-						l.overwritepixel(i, j, Piksel(red, green, blue, 0, 0));
+						l->overwritepixel(i, j, Piksel(red, green, blue, 0, 0));
 					}
 				}
 			}
 			else if (dubina == 4) {
-				for (int j = visina - 1; j >= 0; j--) { // uslovi za dubinu za citanje OK !
+				for (int j = 0; j <visina; j++) { // uslovi za dubinu za citanje OK !
 					for (int i = 0; i < sirina; i++) {
 						short temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
@@ -165,13 +165,13 @@ public:
 						binarnifajl.read((char*)& temp, sizeof(temp));
 						temp = zamenibitove16(temp);
 						char opacity = temp;
-						l.overwritepixel(i, j, Piksel(red, green, blue, 0, opacity));
+						l->overwritepixel(i, j, Piksel(red, green, blue, 0, opacity));
 					}
 				}
 			}
 
 			else if(dubina==1){// kad je crnobelo
-				for (int j = visina - 1; j >= 0; j--) { 
+				for (int j = 0; j <visina; j++) { 
 					for (int i = 0; i < sirina; i++) {
 						short temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
@@ -179,15 +179,15 @@ public:
 						//binarnifajl.read((char*)& temp, sizeof(temp));
 						/*	char opacity = temp;*/
 						if (temp == 0)
-							l.overwritepixel(i, j, Piksel(0, 0, 0, 0, 0));
+							l->overwritepixel(i, j, Piksel(0, 0, 0, 0, 0));
 						else {
-							l.overwritepixel(i, j, Piksel(255, 255, 255, 0, 0));
+							l->overwritepixel(i, j, Piksel(255, 255, 255, 0, 0));
 						}
 					}
 				}
 			} 
 			else if (dubina == 2) { //crnobelo sa opacity
-				for (int j = visina - 1; j >= 0; j--) {
+				for (int j = 0; j <visina; j++) {
 					for (int i = 0; i < sirina; i++) {
 						short temp;
 						binarnifajl.read((char*)& temp, sizeof(temp));
@@ -196,9 +196,9 @@ public:
 						char opacity;
 						binarnifajl.read((char*)& opacity, sizeof(opacity));
 						if (temp == 0)
-							l.overwritepixel(i, j, Piksel(0, 0, 0, 0, opacity));
+							l->overwritepixel(i, j, Piksel(0, 0, 0, 0, opacity));
 						else {
-							l.overwritepixel(i, j, Piksel(255, 255, 255, 0, opacity));
+							l->overwritepixel(i, j, Piksel(255, 255, 255, 0, opacity));
 						}
 					}
 				}
@@ -207,10 +207,10 @@ public:
 		
 		
 
-		Image i = Image();
-		i.DodajSloj(&l, 0);
-		i.setBrBitaPoPixelu(brbajtova * 8);
-		return &i;
+		Image *i = new Image(l->getSirina(),l->getvisina(),brbajtova*8);
+		i->DodajSloj(l, 0);
+		i->setBrBitaPoPixelu(brbajtova * 8);
+		return i;
 		/*PAMwriter pw;
 		pw.upisi(&i);
 		*/

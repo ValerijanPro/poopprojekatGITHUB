@@ -56,7 +56,7 @@ public:
 		int print = 0;
 		int x = 0, y = 0;
 		long long int paja = 0;
-		for (int j = lejer->getvisina() - 1; j >= 0; j--) {
+		for (int j = 0; j < lejer->getvisina(); j++) {
 
 			for (int i = 0; i < lejer->getSirina(); i++) {
 				
@@ -80,11 +80,11 @@ public:
 				p1 = &p4.getPiksel();
 				ar.pop_back();*/
 				char temp;
-				temp = p1->getB();
+				temp = p1->getR();
 				file.write((char*)& temp, sizeof(temp));
 				temp = p1->getG();
 				file.write((char*)& temp, sizeof(temp));
-				temp = p1->getR();
+				temp = p1->getB();
 				file.write((char*)& temp, sizeof(temp));
 		
 				x = i;

@@ -22,15 +22,15 @@ public:
 		Layer* lejer = i->konstruisiFinalniLayer();
 		
 
-		Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
-		Pravougaonik kvadrat2 = Pravougaonik(200, 300, 200 , 200);
-		Pravougaonik kvadrat3 = Pravougaonik(0, 0, 100, 100);
-		pravougaonici pp;
+		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
+		//Pravougaonik kvadrat2 = Pravougaonik(200, 300, 200 , 200);
+		//Pravougaonik kvadrat3 = Pravougaonik(0, 0, 100, 100);
+		//pravougaonici pp;
 
-		pp.push_back(kvadrat1);
-		pp.push_back(kvadrat2);
-		pp.push_back(kvadrat3);
-		Selekcija se = Selekcija("Nekatamo", pp);
+		//pp.push_back(kvadrat1);
+		//pp.push_back(kvadrat2);
+		//pp.push_back(kvadrat3);
+		//Selekcija se = Selekcija("Nekatamo", pp);
 
 
 		DIBzaglavlje dibzaglavlje = DIBzaglavlje(lejer->getSirina(), lejer->getvisina(), lejer->getSirina()* lejer->getvisina()*4); //sir*vis*bitova/8
@@ -55,10 +55,10 @@ public:
 				Piksel* p1 = &lejer->getPixel(i, j);
 
 				
-				if (se.USelekciji(i,j)) {
+			/*	if (se.USelekciji(i,j)) {
 					print++;
 					p1->oboji(0xFF, 0xFF, 0xFF);
-				}
+				}*/
 				
 				char temp;
 				
