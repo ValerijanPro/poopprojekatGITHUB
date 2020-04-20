@@ -4,6 +4,7 @@
 #include <vector>
 #include<string>
 #include"UcitavanjeSlikeMeni.h"
+#include"IspisSlikeMeni.h"
 class MainMeni {
 public:
 	void IspisiMainMeni() {

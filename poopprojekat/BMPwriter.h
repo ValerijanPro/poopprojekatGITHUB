@@ -14,8 +14,8 @@
 class BMPwriter {
 public:
 
-	void upisi(Image* i) {
-		std::fstream file("testiram.bmp", std::ios::binary | std::ios::out);
+	void upisi(Image* i,std::string ImeFajla) {
+		std::fstream file(ImeFajla, std::ios::binary | std::ios::out);
 		//if (!file.is_open) {
 			//gresku napraviti
 		//}

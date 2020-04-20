@@ -15,7 +15,7 @@
 
 class PamCitac {
 public: 
-	void ucitaj(std::string s) {
+	Image* ucitaj(std::string s) {
 
 
 		std::ifstream binarnifajl;
@@ -210,9 +210,10 @@ public:
 		Image i = Image();
 		i.DodajSloj(&l, 0);
 		i.setBrBitaPoPixelu(brbajtova * 8);
-		PAMwriter pw;
+		return &i;
+		/*PAMwriter pw;
 		pw.upisi(&i);
-		
+		*/
 		
 
 	}

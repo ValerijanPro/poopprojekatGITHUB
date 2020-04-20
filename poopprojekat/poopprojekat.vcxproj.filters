@@ -19,6 +19,12 @@
     <Filter Include="Header Files\meniji">
       <UniqueIdentifier>{a69df4e3-849f-443b-b36b-8f0afd0f89b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\BMP">
+      <UniqueIdentifier>{ff25be8b-7165-4e43-b750-1761539b29e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PAM">
+      <UniqueIdentifier>{9af3bbc5-983a-4302-83a7-b098948c1eff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,22 +44,10 @@
     <ClInclude Include="GreskaPostojiKljuc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BMPzaglavlje.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DIBzaglavlje.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NizPiksela.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BMPcitac.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="korisno.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BMPwriter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="operacije.h">
@@ -63,12 +57,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Selekcija.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dibzaglavlje1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BMPzaglavlje1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Add.h">
@@ -122,15 +110,6 @@
     <ClInclude Include="Timotije.h">
       <Filter>Header Files\operations</Filter>
     </ClInclude>
-    <ClInclude Include="pamcitac.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pamwriter.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pamheder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NoviPiksel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -138,6 +117,36 @@
       <Filter>Header Files\meniji</Filter>
     </ClInclude>
     <ClInclude Include="UcitavanjeSlikeMeni.h">
+      <Filter>Header Files\meniji</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPcitac.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPwriter.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPzaglavlje.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="BMPzaglavlje1.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="DIBzaglavlje.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="dibzaglavlje1.h">
+      <Filter>Header Files\BMP</Filter>
+    </ClInclude>
+    <ClInclude Include="pamcitac.h">
+      <Filter>Header Files\PAM</Filter>
+    </ClInclude>
+    <ClInclude Include="pamheder.h">
+      <Filter>Header Files\PAM</Filter>
+    </ClInclude>
+    <ClInclude Include="pamwriter.h">
+      <Filter>Header Files\PAM</Filter>
+    </ClInclude>
+    <ClInclude Include="IspisSlikeMeni.h">
       <Filter>Header Files\meniji</Filter>
     </ClInclude>
   </ItemGroup>

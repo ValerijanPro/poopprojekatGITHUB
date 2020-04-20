@@ -142,6 +142,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inverzija.h" />
     <ClInclude Include="ioperation.h" />
+    <ClInclude Include="IspisSlikeMeni.h" />
     <ClInclude Include="korisno.h" />
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Log.h" />

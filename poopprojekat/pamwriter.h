@@ -14,9 +14,9 @@
 #include"pamheder.h"
 class PAMwriter {
 public:
-	void upisi(Image* i) {
+	void upisi(Image* i,std::string imeFajla) {
 		//std::ofstream file;
-		std::fstream file("testiram.pam", std::ios::binary | std::ios::out);
+		std::fstream file(imeFajla, std::ios::binary | std::ios::out);
 		
 		//file.open("testiram.pam");
 		Layer* lejer = i->konstruisiFinalniLayer();
@@ -31,7 +31,7 @@ public:
 		ispisiString(&file, pamheder.tupltype); 
 		ispisiString(&file, pamheder.endhdr);
 		Layer* novi = (lejer->IzvrsiMedijanu());
-		lejer = novi;
+		//lejer = novi;
 
 		
 		std::vector<ioperation*> niz;

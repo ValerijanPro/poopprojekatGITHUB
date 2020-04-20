@@ -17,6 +17,7 @@
 void main() {
 	MainMeni mm = MainMeni();
 	int Radi = 1;
+	Image* slika=new Image();
 	while (1) {
 		mm.IspisiMainMeni();
 		int opcija = mm.UcitajOpciju();
@@ -29,8 +30,16 @@ void main() {
 			if (um.getFormat() == 0) {
 				continue;
 			}
-			um.UcitajSliku();
+			slika=um.UcitajSliku();
 			continue;
+		}
+		else if (opcija == 5) {
+		//	BMPwriter bmp = BMPwriter();
+			//bmp.upisi(slika);
+			IspisSlikeMeni im = IspisSlikeMeni();
+			im.IspisiSliku(slika);
+			continue;
+			
 		}
 		else {
 			

@@ -17,30 +17,33 @@ public:
 		std::cout << "1.BMP" << std::endl;
 		std::cout << "2.PAM" << std::endl;
 		std::cout << "3.Image" << std::endl;
-		std::cout << "0. Nazad na MainMenu" << std::endl;
+		std::cout << "0. Nazad na Glavni Meni" << std::endl;
 		//std::cin >> ImeSlike;
 	}
 	void UcitajFormat() {
 		PrintFormati();
 		std::cin >> format;
 	}
-	void UcitajSliku() {
+	Image* UcitajSliku() {
+		Image* i=new Image();
 		std::cout << "Unesite ime slike, bez ekstenzije" << std::endl;
 		std::cin >> ImeSlike;
 		if (format == 1) {
 			ImeSlike += ".bmp";
 			b = BMPcitac();
-			b.ucitaj(ImeSlike);
+			i=b.ucitaj(ImeSlike);
+			Layer* lejer = i->konstruisiFinalniLayer();
+			std::cout << "opet";
 		}
 		else if (format == 2) {
 			ImeSlike += ".pam";
 			p = PamCitac();
-			p.ucitaj(ImeSlike);
+			i=p.ucitaj(ImeSlike);
 		}
 		else {
 
 		}
-
+		return i;
 	
 	}
 };
