@@ -13,7 +13,7 @@
 #include"BMPzaglavlje1.h"
 class BMPwriter {
 public:
-	//void upisi(int velBMPfajla,int sirina,int visina,int velbitmape) {
+
 	void upisi(Image* i) {
 		std::fstream file("testiram.bmp", std::ios::binary | std::ios::out);
 		//if (!file.is_open) {
@@ -21,33 +21,22 @@ public:
 		//}
 		Layer* lejer = i->konstruisiFinalniLayer();
 		
-		// testiramo
-		//Pravougaonik kvadrat1 = Pravougaonik(0, 0, 400, 300);
-		Pravougaonik kvadrat2 = Pravougaonik(0, 300, 800 , 200);
-		//Pravougaonik kvadrat3 = Pravougaonik(0, 0, 750, 450);
+
+		Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
+		Pravougaonik kvadrat2 = Pravougaonik(200, 300, 200 , 200);
+		Pravougaonik kvadrat3 = Pravougaonik(0, 0, 100, 100);
 		pravougaonici pp;
-		/*pp.push_back(kvadrat1);
-		pp.push_back(kvadrat2);*/
-		//pp.push_back(kvadrat1);
+
+		pp.push_back(kvadrat1);
 		pp.push_back(kvadrat2);
-		//pp.push_back(kvadrat3);
+		pp.push_back(kvadrat3);
 		Selekcija se = Selekcija("Nekatamo", pp);
 
-		//testiramo
-		/*DIBzaglavlje dibzaglavlje = DIBzaglavlje(lejer->getSirina(), lejer->getvisina(), lejer->getSirina()* lejer->getvisina());
-		dibzaglavlje.brBitaPoPixelu = brbitovapopix;*/
-		/*DIBzaglavlje1 dibzaglavlje = DIBzaglavlje1(lejer->getSirina(), lejer->getvisina(), lejer->getSirina() * lejer->getvisina());
-		dibzaglavlje.brBitaPoPixelu = brbitovapopix;*/
 
-		DIBzaglavlje dibzaglavlje = DIBzaglavlje(lejer->getSirina(), lejer->getvisina(), lejer->getSirina()* lejer->getvisina()*3);
-		dibzaglavlje.brBitaPoPixelu = i->getBrBitaPoPixelu();
-		//dibzaglavlje.brBitaPoPixelu = ;
-		//BMPzaglavlje bmpzaglavlje = BMPzaglavlje(lejer->getSirina() * lejer->getvisina()+54);
-	/*	BMPzaglavlje1 bmpzaglavlje = BMPzaglavlje1(lejer->getSirina() * lejer->getvisina()*3+122); */
-		BMPzaglavlje bmpzaglavlje = BMPzaglavlje(lejer->getSirina() * lejer->getvisina()*3 + 56);
-		//bmpzaglavlje.zamenibitove();
-		//bmpzaglavlje.zamenibitove();
-	//	dibzaglavlje.zamenibitove();
+		DIBzaglavlje dibzaglavlje = DIBzaglavlje(lejer->getSirina(), lejer->getvisina(), lejer->getSirina()* lejer->getvisina()*4); //sir*vis*bitova/8
+
+		BMPzaglavlje bmpzaglavlje = BMPzaglavlje(lejer->getSirina() * lejer->getvisina()*4 + 54);
+
 		file.write((char*)& bmpzaglavlje, sizeof(bmpzaglavlje));
 		file.write((char*)& dibzaglavlje, sizeof(dibzaglavlje));
 		
@@ -57,19 +46,16 @@ public:
 		int print = 0;
 		int x=0, y=0;
 		int paja = 0;
+		
 		for (int j = dibzaglavlje.visinaSlike - 1; j >= 0; j--) { // obrnuto
-			for (int i = 0; i < dibzaglavlje.sirinaSlike; i++) {
+			
+			for (int i=0; i < dibzaglavlje.sirinaSlike; i++) {
 				
-				/*if (dibzaglavlje.sirinaSlike % 2 == 1 && j % 2 == 1 && i == dibzaglavlje.sirinaSlike) {
-					state = 0;
-				}
-				char temp;
-				*/
+
 				Piksel* p1 = &lejer->getPixel(i, j);
-				//p1->crnobela();
+
 				
 				if (se.USelekciji(i,j)) {
-				//	std::cout <<j<<", "<< i<<std::endl;
 					print++;
 					p1->oboji(0xFF, 0xFF, 0xFF);
 				}
@@ -77,23 +63,20 @@ public:
 				char temp;
 				
 				temp = p1->getB(); 
-				//if (print)
-				//std::cout <<"B:"<< (int)temp;
+	
 				file.write((char*)& temp, sizeof(temp));
 				temp = p1->getG();
-				//if (print)
-				//std::cout << "G:" << (int)temp;
+		
 				file.write((char*)& temp, sizeof(temp));
 				temp = p1->getR();
-				//if (print)
-				//std::cout << "R:" << (int)temp;
+			
 				file.write((char*)& temp, sizeof(temp));
 				paja++;
 				x = i;
 				y = j;
 		
 				temp = p1->getOpacity();
-				//temp = 200;
+				
 				file.write((char*)& temp, sizeof(temp));
 				
 				//if (!state) {
@@ -141,7 +124,7 @@ public:
 
 
 			}
-
+		
 		}
 	/*	while (paja < 45000) {
 			paja++;
@@ -154,8 +137,8 @@ public:
 			file.write((char*)& temp, sizeof(temp));
 		}
 				*/
-		std::cout << print;
-		std::cout << paja;
+		file.close();
+
 
 	}
 };

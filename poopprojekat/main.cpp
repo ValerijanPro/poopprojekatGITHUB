@@ -13,7 +13,36 @@
 #include"Timotije.h"
 #include"pamcitac.h"
 #include"pamwriter.h"
+#include"MainMeni.h"
 void main() {
+	MainMeni mm = MainMeni();
+	int Radi = 1;
+	while (1) {
+		mm.IspisiMainMeni();
+		int opcija = mm.UcitajOpciju();
+
+		if (opcija == 1) {
+			
+			UcitavanjeSlikeMeni um = UcitavanjeSlikeMeni();
+			
+			um.UcitajFormat();
+			if (um.getFormat() == 0) {
+				continue;
+			}
+			um.UcitajSliku();
+			continue;
+		}
+		else {
+			
+			break;
+		}
+
+			
+		
+			
+		
+	}
+
 
 	PamCitac p = PamCitac();
 	//p.ucitaj("p7_3x2_12b_3d.pam");
@@ -35,16 +64,6 @@ void main() {
 	}
 	NoviPiksel p4 = s.top();
 
-	//Pixel result = stack.pop();
-
-	Image i = Image(3, 3,3);
-	Layer l = Layer(5,5);
-
-	
-	Layer l1 = Layer(4, 4);
-	Layer l2 = Layer(2, 3);
-	Layer l3 = Layer(7, 2);
-
-	std::cout << l;
+	return;
 	
 }

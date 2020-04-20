@@ -31,12 +31,12 @@ public:
 		ispisiString(&file, pamheder.tupltype); 
 		ispisiString(&file, pamheder.endhdr);
 		Layer* novi = (lejer->IzvrsiMedijanu());
-		//lejer = novi;
+		lejer = novi;
 
 		
 		std::vector<ioperation*> niz;
 		niz.push_back(&Push(0));
-		niz.push_back(&Crnobela());
+		niz.push_back(&Inverzija());
 /*
 		file.close();
 		file.write((char*)& pamheder, sizeof(pamheder));
@@ -61,23 +61,24 @@ public:
 			for (int i = 0; i < lejer->getSirina(); i++) {
 				
 				Piksel* p1 = &lejer->getPixel(i, j);
+				/*
 				NoviPiksel p3 = NoviPiksel(*p1);
 				argumenti ar = { p3 };
 				
-				stek s;
+				stek s;*/
 				//if (se.USelekciji(i, j)) {
 				//	//std::cout << "i:" << i << ", j:" << j << std::endl;
 				//	p1->oboji(0xFF, 0xFF, 0x00);
 				//}
 
 
-				for (auto i : niz) {
+			/*	for (auto i : niz) {
 					i->run(s, ar);
 				}
 				NoviPiksel p4 = s.top();
 				s.pop();
 				p1 = &p4.getPiksel();
-				ar.pop_back();
+				ar.pop_back();*/
 				char temp;
 				temp = p1->getB();
 				file.write((char*)& temp, sizeof(temp));

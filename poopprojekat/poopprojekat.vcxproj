@@ -146,6 +146,7 @@
     <ClInclude Include="Layer.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Max.h" />
+    <ClInclude Include="MainMeni.h" />
     <ClInclude Include="Min.h" />
     <ClInclude Include="Mul.h" />
     <ClInclude Include="NizPiksela.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="Sub.h" />
     <ClInclude Include="SubInvert.h" />
     <ClInclude Include="Timotije.h" />
+    <ClInclude Include="UcitavanjeSlikeMeni.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

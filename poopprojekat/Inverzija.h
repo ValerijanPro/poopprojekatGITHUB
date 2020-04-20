@@ -15,7 +15,7 @@ class Inverzija :public ioperation {
 	int broj;
 public:
 
-	Inverzija(int b) :broj(b) {}
+	Inverzija(int b=0) :broj(b) {}
 	void run(stek& s, argumenti arg) {
 		NoviPiksel p1 = s.top();
 		

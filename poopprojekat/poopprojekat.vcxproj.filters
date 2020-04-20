@@ -16,6 +16,9 @@
     <Filter Include="Header Files\operations">
       <UniqueIdentifier>{b534aa05-123e-4674-b3e8-69f860c6f289}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\meniji">
+      <UniqueIdentifier>{a69df4e3-849f-443b-b36b-8f0afd0f89b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -130,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="NoviPiksel.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMeni.h">
+      <Filter>Header Files\meniji</Filter>
+    </ClInclude>
+    <ClInclude Include="UcitavanjeSlikeMeni.h">
+      <Filter>Header Files\meniji</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -157,7 +157,7 @@ public:
 		return (*this);
 	}
 	virtual ~Layer() { brisi(); }
-	void Medijana(int x,int y) {
+	Piksel Medijana(int x,int y) {
 		
 		int sumaR = 0,sumaG=0,sumaB=0;
 		sumaR = getPixel(x - 1, y - 1).getR()+ getPixel(x , y - 1).getR()+ getPixel(x + 1, y - 1).getR()+ getPixel(x - 1, y ).getR()+
@@ -172,9 +172,10 @@ public:
 		sumaR = sumaR / 9;
 		sumaG = sumaG / 9;
 		sumaB = sumaB / 9;
-		getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+		return Piksel(sumaR, sumaG, sumaB);
+		//getPixel(x, y).oboji(sumaR, sumaG, sumaB);
 	}
-	void IvicaMedijana(int x, int y) {
+	Piksel IvicaMedijana(int x, int y) {
 		//slucaj kad je x == 0
 		
 		int sumaR = 0,sumaG=0, sumaB=0;
@@ -187,8 +188,8 @@ public:
 				sumaR = sumaR / 4;
 				sumaG = sumaG / 4;
 				sumaB = sumaB / 4;
-				getPixel(0, 0).oboji(sumaR, sumaG, sumaB);
-				return;
+				//getPixel(0, 0).oboji(sumaR, sumaG, sumaB);
+				return Piksel(sumaR,sumaG,sumaB);
 			}
 			else if (y==visina-1){
 				//samo 4 dole levo
@@ -198,8 +199,9 @@ public:
 				sumaR = sumaR / 4;
 				sumaG = sumaG / 4;
 				sumaB = sumaB / 4;
-				getPixel(x, y).oboji(sumaR, sumaG, sumaB);
-				return;
+				//getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+				return Piksel(sumaR, sumaG, sumaB);
+				
 			}
 			else {
 				//normalnih 6
@@ -212,10 +214,10 @@ public:
 				sumaR = sumaR / 6;
 				sumaG = sumaG / 6;
 				sumaB = sumaB / 6;
-				getPixel(x, y).oboji(sumaR, sumaG, sumaB);
-				return;
+				//getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+				return Piksel(sumaR, sumaG, sumaB);
 			}
-			return; // da ne ide dalje u else
+			 // da ne ide dalje u else
 		}
 		if (y == 0) {
 			//samo 4
@@ -226,8 +228,8 @@ public:
 				sumaR = sumaR / 4;
 				sumaG = sumaG / 4;
 				sumaB = sumaB / 4;
-				getPixel(x, y).oboji(sumaR, sumaG, sumaB);
-				return;
+				//getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+				return Piksel(sumaR, sumaG, sumaB);
 			}
 			else {//6 normalnih
 				sumaR = getPixel(x-1, 0).getR() + getPixel(x, 0).getR() + getPixel(x+1, 0).getR() +
@@ -239,8 +241,8 @@ public:
 				sumaR = sumaR / 6;
 				sumaG = sumaG / 6;
 				sumaB = sumaB / 6;
-				getPixel(x, y).oboji(sumaR, sumaG, sumaB);
-				return;
+				//getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+				return Piksel(sumaR, sumaG, sumaB);
 			}
 		}
 		if (y == visina - 1) {
@@ -252,8 +254,8 @@ public:
 				sumaR = sumaR / 4;
 				sumaG = sumaG / 4;
 				sumaB = sumaB / 4;
-				getPixel(x, y).oboji(sumaR, sumaG, sumaB);
-				return;
+			//	getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+				return Piksel(sumaR, sumaG, sumaB);
 			}
 			else {
 				//normalnih 6
@@ -266,8 +268,8 @@ public:
 				sumaR = sumaR / 6;
 				sumaG = sumaG / 6;
 				sumaB = sumaB / 6;
-				getPixel(x, y).oboji(sumaR, sumaG, sumaB);
-				return;
+			//	getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+				return Piksel(sumaR, sumaG, sumaB);
 			}
 		}
 		 // desni deo
@@ -281,8 +283,8 @@ public:
 		sumaR = sumaR / 6;
 		sumaG = sumaG / 6;
 		sumaB = sumaB / 6;
-		getPixel(x, y).oboji(sumaR, sumaG, sumaB);
-		return;
+		//getPixel(x, y).oboji(sumaR, sumaG, sumaB);
+		return Piksel(sumaR, sumaG, sumaB);
 		
 	
 
@@ -292,15 +294,19 @@ public:
 	}
 	Layer* IzvrsiMedijanu() {
 		Layer* nova = new Layer(*this);
-		//smart pointer
+		
 		for (int i = 0; i < sirina; i++) {
 			for (int j = 0; j < visina; j++) {
+				Piksel p;
 				if (nova->normalnaMedijana(i, j)) {
-					nova->Medijana(i, j);
+					//nova->Medijana(i, j);
+					p=Medijana(i, j);
 				}
 				else {
-					nova->IvicaMedijana(i, j);
+					//nova->IvicaMedijana(i, j);
+					p=IvicaMedijana(i, j);
 				}
+				nova->getPixel(i, j).oboji(p.getR(), p.getG(), p.getB());
 			}
 		}
 

@@ -29,6 +29,7 @@ public:
 		visinaSlike = vis;
 		karataBoja = 256;
 		karataBoja = zamenibitove16(karataBoja);
+		brBitaPoPixelu = 32;
 		//brBitaPoPixelu = 6144;
 		//brBitaPoPixelu = 2048;
 		//brBitaPoPixelu = 4;
@@ -36,12 +37,12 @@ public:
 		BI_RGB = 0;
 		velicinaBitmape = velicina;
 		//velicinaBitmape = 49152;
-		//reserved1 = 319488000;
-		reserved1 = 3943432192;
+		reserved1 = 319488000;
+	//	reserved1 = 3943432192;
 		//reserved1 = 0;
 		reserved1 = zamenibitove32(reserved1);
-		//reserved2 = 319488000;
-		reserved2 = 3943432192;
+		reserved2 = 319488000;
+	//	reserved2 = 3943432192;
 		//reserved2 = 0;
 		reserved2 = zamenibitove32(reserved2);
 		reserved3 = 0;
