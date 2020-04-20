@@ -5,6 +5,7 @@
 #include<string>
 #include"UcitavanjeSlikeMeni.h"
 #include"IspisSlikeMeni.h"
+#include"MeniZaSelekcije.h"
 class MainMeni {
 public:
 	void IspisiMainMeni() {

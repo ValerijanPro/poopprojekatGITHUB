@@ -16,6 +16,7 @@
 #include"MainMeni.h"
 void main() {
 	MainMeni mm = MainMeni();
+	MeniZaSelekcije ms;
 	int Radi = 1;
 	Image* slika=new Image();
 	while (1) {
@@ -31,6 +32,11 @@ void main() {
 				continue;
 			}
 			slika=um.UcitajSliku();
+			continue;
+		}
+		else if (opcija == 2) {
+			ms.UcitajSelekciju();
+
 			continue;
 		}
 		else if (opcija == 5) {
