@@ -5,28 +5,35 @@
 #include"Piksel.h"
 #include"Layer.h"
 #include"GreskaPostojiKljuc.h"
+#include"Selekcija.h"
 //typedef std::vector<Layer*> mapa;
 typedef std::map<int, Layer*> mapa;
+typedef std::vector<Selekcija> selekcije;
 class Image{
 	//typedef std::vector<Layer> slojevi;
 	mapa layers;
 	int sirina, visina,brlejera;
 	int brbitapopixelu;
-	
+	selekcije sel;
 public:
 	Image(int s=0, int v=0,int b=0,int bbpp=0) {
 		sirina = s;
 		visina = v;
 		brlejera = b;
 		brbitapopixelu = bbpp;
-	
+		sel.clear();
 	}
 	// 1. funkcije za : prosirenje slike (realokacija svakog lejera, tj matrica u svakom lejeru), on prodje kroz sve lejere i u njima prosirenje pozove
 	// prosledim novu velicinu u funkciju
 	// 2. funkcija za dodavanje lejera, i ako je sirina i visina lejera veca od image sir i visine, onda
 	// prosiriti sirinu i visinu u svim lejerima
 	// tj ako dodas lejer koji je veci od ostalih, svi ostali moraju da porastu
-	
+	void dodajSelekciju(std::string s,pravougaonici pp,bool stanje) {
+		Selekcija* nova = new Selekcija(s, pp);
+		nova->setStanje(stanje);
+		sel.push_back(*nova);
+		
+	}
 	void DodajSloj( Layer* l,int pozicija) { 
 
 
@@ -128,6 +135,7 @@ private:
 		sirina = 0;
 		visina = 0;
 		brlejera = 0;
+		sel.clear();
 	}
 public:
 	Image(const Image& s) { kopiraj(s); }

@@ -149,5 +149,8 @@
     <ClInclude Include="IspisSlikeMeni.h">
       <Filter>Header Files\meniji</Filter>
     </ClInclude>
+    <ClInclude Include="MeniZaSelekcije.h">
+      <Filter>Header Files\meniji</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

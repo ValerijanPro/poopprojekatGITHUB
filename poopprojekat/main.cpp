@@ -36,7 +36,7 @@ void main() {
 			continue;
 		}
 		else if (opcija == 2) {
-			ms.UcitajSelekciju();
+			ms.UcitajSelekciju(slika);
 
 			continue;
 		}

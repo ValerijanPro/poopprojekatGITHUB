@@ -6,17 +6,17 @@
 #include"pamcitac.h"
 #include"BMPcitac.h"
 #include"Selekcija.h"
-typedef std::vector<Selekcija*> selekcije;
+//typedef std::vector<Selekcija*> selekcije;
 typedef std::vector<bool> aktivne;
 class MeniZaSelekcije {
-	selekcije s ;
-	aktivne a;
+	//selekcije s ;
+//	aktivne a;
 public:
 	MeniZaSelekcije() {
-		s.clear();
-		a.clear();
+	//	s.clear();
+	//	a.clear();
 	}
-	void UcitajSelekciju() {
+	void UcitajSelekciju(Image* i) {
 		int dosta = 1;
 		pravougaonici pp;
 		std::cout << "Unesite redom pravougaonike jedne selekcije: "<<std::endl;
@@ -30,8 +30,8 @@ public:
 			std::cout << "Visina pravougaonika: " << std::endl;
 			std::cin >> vis;
 			std::cout << "Kraj ove selekcije? " << std::endl;
-			std::cout << "1. Da" << std::endl;
-			std::cout << "2. Ne" << std::endl;
+			std::cout << "1. Ne" << std::endl;
+			std::cout << "2. Da" << std::endl;
 			std::cin >> dosta;
 			Pravougaonik kvadrat(x, y, sir, vis);
 			pp.push_back(kvadrat);
@@ -39,16 +39,17 @@ public:
 		std::cout << "Ime ove selekcije: " << std::endl;
 		std::string ime;
 		std::cin >> ime;
-		Selekcija se(ime, pp);
+	//	Selekcija se(ime, pp);
 		std::cout << "Aktivna ili neaktivna selekcija? " << std::endl;
 		std::cout << "1. Aktivna   0. Neaktivna" << std::endl;
 		bool stanje;
 		std::cin >> stanje;
-		a.push_back(stanje);
-		s.push_back(&se);	
+		i->dodajSelekciju(ime, pp, stanje);
+		//a.push_back(stanje);
+		//s.push_back(&se);	
 	}
 	~MeniZaSelekcije() {
-		s.clear();
-		a.clear();
+		//s.clear();
+	//	a.clear();
 	}
 };

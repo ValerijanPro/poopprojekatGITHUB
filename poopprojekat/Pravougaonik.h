@@ -3,10 +3,7 @@
 
 #include <vector>
 #include<string>
-#include"Piksel.h"
-#include"Layer.h"
-#include"Image.h"
-#include"BMPcitac.h"
+
 #include <map>
 
 class Pravougaonik {

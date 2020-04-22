@@ -3,10 +3,8 @@
 
 #include <vector>
 #include<string>
-#include"Piksel.h"
-#include"Layer.h"
-#include"Image.h"
-#include"BMPcitac.h"
+
+
 #include"Pravougaonik.h"
 #include <map>
 typedef std::vector<Pravougaonik> pravougaonici;
@@ -29,4 +27,5 @@ public:
 		 return 0;
 		
 	}
+	void setStanje(bool a) { aktivna = a; }
 };
