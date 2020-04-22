@@ -14,6 +14,7 @@
 #include"pamcitac.h"
 #include"pamwriter.h"
 #include"MainMeni.h"
+
 void main() {
 	MainMeni mm = MainMeni();
 	MeniZaSelekcije ms;
