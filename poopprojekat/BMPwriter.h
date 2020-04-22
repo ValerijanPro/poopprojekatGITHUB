@@ -61,18 +61,31 @@ public:
 
 				
 
+				if (image->getSelekcije().size() != 0) {
+					for (auto q : image->getSelekcije()) {
 
-				for (auto q : image->getSelekcije()) {
-					if (q.getStanje() && q.USelekciji(i, j)) {
-						for (auto q : image->getOperacije()) {
-							q->run(s, ar);
+						if (q.getStanje() && q.USelekciji(i, j)) {
+							for (auto q : image->getOperacije()) {
+								q->run(s, ar);
+							}
+							NoviPiksel p4 = s.top();
+
+							p1 = &p4.getPiksel();
+							s.pop();
+							ar.pop_back();
+							break;
 						}
-						NoviPiksel p4 = s.top();
-
-						p1 = &p4.getPiksel();
-						s.pop();
-						ar.pop_back();
 					}
+				}
+				else {
+					for (auto q : image->getOperacije()) {
+						q->run(s, ar);
+					}
+					NoviPiksel p4 = s.top();
+
+					p1 = &p4.getPiksel();
+					s.pop();
+					ar.pop_back();
 				}
 			
 				

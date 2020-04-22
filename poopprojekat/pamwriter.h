@@ -61,27 +61,40 @@ public:
 			for (int i = 0; i < lejer->getSirina(); i++) {
 				
 				Piksel* p1 = &lejer->getPixel(i, j);
-				
+
 				NoviPiksel p3 = NoviPiksel(*p1);
 				argumenti ar = { p3 };
-				
-				stek s;
-				
-				for (auto i : image->getOperacije()) {
-					i->run(s, ar);
-				}
-				NoviPiksel p4 = s.top();
-				
-				
-				
-				for (auto q : image->getSelekcije()) {
-					if (q.getStanje() && q.USelekciji(i, j)) {
 
-						p1 = &p4.getPiksel();
+				stek s;
+
+
+
+				if (image->getSelekcije().size() != 0) {
+					for (auto q : image->getSelekcije()) {
+
+						if (q.getStanje() && q.USelekciji(i, j)) {
+							for (auto q : image->getOperacije()) {
+								q->run(s, ar);
+							}
+							NoviPiksel p4 = s.top();
+
+							p1 = &p4.getPiksel();
+							s.pop();
+							ar.pop_back();
+							break;
+						}
 					}
 				}
-				s.pop();
-				ar.pop_back();
+				else {
+					for (auto q : image->getOperacije()) {
+						q->run(s, ar);
+					}
+					NoviPiksel p4 = s.top();
+
+					p1 = &p4.getPiksel();
+					s.pop();
+					ar.pop_back();
+				}
 				//if (se.USelekciji(i, j)) {
 				//	//std::cout << "i:" << i << ", j:" << j << std::endl;
 				//	p1->oboji(0xFF, 0xFF, 0x00);
