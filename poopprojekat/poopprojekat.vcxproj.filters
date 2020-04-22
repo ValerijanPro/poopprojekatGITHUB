@@ -152,5 +152,8 @@
     <ClInclude Include="MeniZaSelekcije.h">
       <Filter>Header Files\meniji</Filter>
     </ClInclude>
+    <ClInclude Include="MeniZaOperacije.h">
+      <Filter>Header Files\meniji</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

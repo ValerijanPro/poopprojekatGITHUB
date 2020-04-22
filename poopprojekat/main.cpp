@@ -40,6 +40,11 @@ void main() {
 
 			continue;
 		}
+		else if (opcija == 3) {
+			MeniZaOperacije mo;
+			mo.printujOperacije(slika);
+			continue;
+		}
 		else if (opcija == 5) {
 		//	BMPwriter bmp = BMPwriter();
 			//bmp.upisi(slika);

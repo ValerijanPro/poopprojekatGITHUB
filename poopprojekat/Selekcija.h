@@ -28,4 +28,5 @@ public:
 		
 	}
 	void setStanje(bool a) { aktivna = a; }
+	bool getStanje()const { return aktivna; }
 };

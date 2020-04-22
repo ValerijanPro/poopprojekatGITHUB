@@ -14,12 +14,12 @@
 #include"pamheder.h"
 class PAMwriter {
 public:
-	void upisi(Image* i,std::string imeFajla) {
+	void upisi(Image* image,std::string imeFajla) {
 		//std::ofstream file;
 		std::fstream file(imeFajla, std::ios::binary | std::ios::out);
 		
 		//file.open("testiram.pam");
-		Layer* lejer = i->konstruisiFinalniLayer();
+		Layer* lejer = image->konstruisiFinalniLayer();
 		//DIBzaglavlje1 dibzaglavlje = DIBzaglavlje1(lejer->getSirina(), lejer->getvisina(), lejer->getSirina() * lejer->getvisina());
 		PamHeder pamheder = PamHeder(lejer->getSirina(), lejer->getvisina());
 		//BMPzaglavlje1 bmpzaglavlje = BMPzaglavlje1(lejer->getSirina() * lejer->getvisina() * 3 + 122);
@@ -61,11 +61,27 @@ public:
 			for (int i = 0; i < lejer->getSirina(); i++) {
 				
 				Piksel* p1 = &lejer->getPixel(i, j);
-				/*
+				
 				NoviPiksel p3 = NoviPiksel(*p1);
 				argumenti ar = { p3 };
 				
-				stek s;*/
+				stek s;
+				
+				for (auto i : image->getOperacije()) {
+					i->run(s, ar);
+				}
+				NoviPiksel p4 = s.top();
+				
+				
+				
+				for (auto q : image->getSelekcije()) {
+					if (q.getStanje() && q.USelekciji(i, j)) {
+
+						p1 = &p4.getPiksel();
+					}
+				}
+				s.pop();
+				ar.pop_back();
 				//if (se.USelekciji(i, j)) {
 				//	//std::cout << "i:" << i << ", j:" << j << std::endl;
 				//	p1->oboji(0xFF, 0xFF, 0x00);

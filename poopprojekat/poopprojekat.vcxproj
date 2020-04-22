@@ -148,6 +148,7 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="Max.h" />
     <ClInclude Include="MainMeni.h" />
+    <ClInclude Include="MeniZaOperacije.h" />
     <ClInclude Include="MeniZaSelekcije.h" />
     <ClInclude Include="Min.h" />
     <ClInclude Include="Mul.h" />

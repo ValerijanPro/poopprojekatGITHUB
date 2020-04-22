@@ -13,13 +13,13 @@
 #include"BMPzaglavlje1.h"
 class BMPwriter {
 public:
-
-	void upisi(Image* i,std::string ImeFajla) {
+	 
+	void upisi(Image* image,std::string ImeFajla) {
 		std::fstream file(ImeFajla, std::ios::binary | std::ios::out);
 		//if (!file.is_open) {
 			//gresku napraviti
 		//}
-		Layer* lejer = i->konstruisiFinalniLayer();
+		Layer* lejer = image->konstruisiFinalniLayer();
 		
 
 		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
@@ -54,11 +54,28 @@ public:
 
 				Piksel* p1 = &lejer->getPixel(i, j);
 
+				NoviPiksel p3 = NoviPiksel(*p1);
+				argumenti ar = { p3 };
+
+				stek s;
+
 				
-			/*	if (se.USelekciji(i,j)) {
-					print++;
-					p1->oboji(0xFF, 0xFF, 0xFF);
-				}*/
+
+
+				for (auto q : image->getSelekcije()) {
+					if (q.getStanje() && q.USelekciji(i, j)) {
+						for (auto q : image->getOperacije()) {
+							q->run(s, ar);
+						}
+						NoviPiksel p4 = s.top();
+
+						p1 = &p4.getPiksel();
+						s.pop();
+						ar.pop_back();
+					}
+				}
+			
+				
 				
 				char temp;
 				

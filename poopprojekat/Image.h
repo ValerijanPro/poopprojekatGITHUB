@@ -1,20 +1,24 @@
 #pragma once
 #include<map>
+#include<memory>
 #include<iostream>
 #include <vector>
 #include"Piksel.h"
 #include"Layer.h"
 #include"GreskaPostojiKljuc.h"
 #include"Selekcija.h"
+#include"Timotije.h"
 //typedef std::vector<Layer*> mapa;
 typedef std::map<int, Layer*> mapa;
 typedef std::vector<Selekcija> selekcije;
+typedef std::vector<std::shared_ptr<ioperation>> op;
 class Image{
 	//typedef std::vector<Layer> slojevi;
 	mapa layers;
 	int sirina, visina,brlejera;
 	int brbitapopixelu;
 	selekcije sel;
+	op operacije;
 public:
 	Image(int s=0, int v=0,int b=0,int bbpp=0) {
 		sirina = s;
@@ -22,18 +26,102 @@ public:
 		brlejera = b;
 		brbitapopixelu = bbpp;
 		sel.clear();
+		operacije.clear();
 	}
 	// 1. funkcije za : prosirenje slike (realokacija svakog lejera, tj matrica u svakom lejeru), on prodje kroz sve lejere i u njima prosirenje pozove
 	// prosledim novu velicinu u funkciju
 	// 2. funkcija za dodavanje lejera, i ako je sirina i visina lejera veca od image sir i visine, onda
 	// prosiriti sirinu i visinu u svim lejerima
 	// tj ako dodas lejer koji je veci od ostalih, svi ostali moraju da porastu
+	op& getOperacije() { return operacije; }
+	void dodajPush() {
+		operacije.push_back(std::make_shared<Push>(0));
+	}
+	int DodajOperaciju(int input) {
+		std::shared_ptr<ioperation> p1 = std::make_shared<Absolute>(0);
+		if (input == 1) {
+			operacije.push_back(std::make_shared<Absolute>(0));
+			return 1;
+		}
+		else if (input == 2) {
+			int broj;
+			std::cout << "Unesite koji broj zelite da dodate: " << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<Add>(broj)); return 1;
+		}
+		else if (input == 3) {
+			//	i->getOperacije().push_back(&Crnobela());
+			operacije.push_back(std::make_shared<Crnobela>()); return 1;
+		}
+		else if (input == 4) {
+			int broj;
+			std::cout << "Unesite broj kojim zelite da podelite" << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<Div>(broj)); return 1;
+		}
+		else if (input == 5) {
+			int broj;
+			std::cout << "Unesite broj koji zelite da podelite" << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<DivInvert>(broj)); return 1;
+		}
+		else if (input == 6) {
+			operacije.push_back(std::make_shared<Inverzija>()); return 1;
+		}
+		else if (input == 7) {
+			operacije.push_back(std::make_shared<Log>(0)); return 1;
+		}
+		else if (input == 8) {
+			int broj;
+			std::cout << "Unesite broj za max" << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<Max>(broj)); return 1;
+		}
+		else if (input == 9) {
+			int broj;
+			std::cout << "Unesite broj za min" << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<Min>(broj)); return 1;
+		}
+		else if (input == 10) {
+			int broj;
+			std::cout << "Unesite broj kojim zelite da pomnozite" << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<Mul>(broj)); return 1;
+		}
+		else if (input == 11) {
+			int broj;
+			std::cout << "Unesite eksponent na koji podizete" << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<Pow>(broj)); return 1;
+		}
+		else if (input == 12) {
+			operacije.push_back(std::make_shared<Siva>()); return 1;
+		}
+		else if (input == 13) {
+			int broj;
+			std::cout << "Unesite koji broj zelite da oduzmete: " << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<Sub>(broj)); return 1;
+		}
+		else if (input == 14) {
+			int broj;
+			std::cout << "Unesite koji broj od kog zelite da oduzmete: " << std::endl;
+			std::cin >> broj;
+			operacije.push_back(std::make_shared<SubInvert>(broj)); return 1;
+		}
+
+		else return 0;
+	
+	}
+
 	void dodajSelekciju(std::string s,pravougaonici pp,bool stanje) {
 		Selekcija* nova = new Selekcija(s, pp);
 		nova->setStanje(stanje);
 		sel.push_back(*nova);
 		
 	}
+	selekcije& getSelekcije() { return sel; }
 	void DodajSloj( Layer* l,int pozicija) { 
 
 
@@ -136,6 +224,7 @@ private:
 		visina = 0;
 		brlejera = 0;
 		sel.clear();
+		operacije.clear();
 	}
 public:
 	Image(const Image& s) { kopiraj(s); }

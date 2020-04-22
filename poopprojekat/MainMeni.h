@@ -6,6 +6,7 @@
 #include"UcitavanjeSlikeMeni.h"
 #include"IspisSlikeMeni.h"
 #include"MeniZaSelekcije.h"
+#include"MeniZaOperacije.h"
 class MainMeni {
 public:
 	void IspisiMainMeni() {
