@@ -37,6 +37,7 @@ public:
 		std::vector<ioperation*> niz;
 		niz.push_back(&Push(0));
 		niz.push_back(&Inverzija());
+		// +128; Crnobela, Inverzija
 /*
 		file.close();
 		file.write((char*)& pamheder, sizeof(pamheder));

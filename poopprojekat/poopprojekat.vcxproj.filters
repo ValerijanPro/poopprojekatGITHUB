@@ -25,6 +25,9 @@
     <Filter Include="Header Files\PAM">
       <UniqueIdentifier>{9af3bbc5-983a-4302-83a7-b098948c1eff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Selekcije">
+      <UniqueIdentifier>{f7b3e8f2-f101-484b-9718-842f38ef7580}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -51,12 +54,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="operacije.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pravougaonik.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Selekcija.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Add.h">
@@ -148,6 +145,15 @@
     </ClInclude>
     <ClInclude Include="IspisSlikeMeni.h">
       <Filter>Header Files\meniji</Filter>
+    </ClInclude>
+    <ClInclude Include="MeniZaSelekcije.h">
+      <Filter>Header Files\meniji</Filter>
+    </ClInclude>
+    <ClInclude Include="Selekcija.h">
+      <Filter>Header Files\Selekcije</Filter>
+    </ClInclude>
+    <ClInclude Include="Pravougaonik.h">
+      <Filter>Header Files\Selekcije</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

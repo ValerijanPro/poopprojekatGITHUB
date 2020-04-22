@@ -1,32 +1,37 @@
-#pragma once
+//#pragma once
 #include<map>
 #include<iostream>
 #include <vector>
 #include"Piksel.h"
 #include"Layer.h"
 #include"GreskaPostojiKljuc.h"
+#include"Selekcija.h"
 //typedef std::vector<Layer*> mapa;
 typedef std::map<int, Layer*> mapa;
+typedef std::vector<Selekcija*> selekcije;
 class Image{
 	//typedef std::vector<Layer> slojevi;
 	mapa layers;
 	int sirina, visina,brlejera;
 	int brbitapopixelu;
-	
+	//selekcije sel;
 public:
 	Image(int s=0, int v=0,int b=0,int bbpp=0) {
 		sirina = s;
 		visina = v;
 		brlejera = b;
 		brbitapopixelu = bbpp;
-	
+		//sel.clear();
 	}
 	// 1. funkcije za : prosirenje slike (realokacija svakog lejera, tj matrica u svakom lejeru), on prodje kroz sve lejere i u njima prosirenje pozove
 	// prosledim novu velicinu u funkciju
 	// 2. funkcija za dodavanje lejera, i ako je sirina i visina lejera veca od image sir i visine, onda
 	// prosiriti sirinu i visinu u svim lejerima
 	// tj ako dodas lejer koji je veci od ostalih, svi ostali moraju da porastu
-	
+	void dodajSelekciju(std::string s, pravougaonici p,bool a) { 
+		//sel.push_back(&Selekcija(s,p));
+		//sel.setStanje(a);
+	}
 	void DodajSloj( Layer* l,int pozicija) { 
 
 
@@ -86,6 +91,7 @@ public:
 	void ObrisiSloj() {
 
 	}
+	//selekcije getSelekcija() { return sel; }
 	int getSirina()const { return sirina; }
 	int getvisina()const { return visina; }
 	int getBrlejera()const { return brlejera; }
@@ -118,6 +124,7 @@ private:
 	}
 	void brisi() {
 		layers.clear();
+	//	sel.clear();
 		//PROBLEM S BRISANJEM ILI OK?
 		/*for (auto i = m.begin(); i !=m.end(); i++) {
 			m.erase(i);

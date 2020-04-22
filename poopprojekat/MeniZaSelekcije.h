@@ -6,17 +6,18 @@
 #include"pamcitac.h"
 #include"BMPcitac.h"
 #include"Selekcija.h"
-typedef std::vector<Selekcija*> selekcije;
-typedef std::vector<bool> aktivne;
+typedef std::vector<Selekcija*> selekcije; // ovo treba u image da postoji, da bi se poslalo u writer
+typedef std::vector<bool> aktivne; //vec u selekciji imam da li je aktivna
 class MeniZaSelekcije {
-	selekcije s ;
+	
 	aktivne a;
 public:
 	MeniZaSelekcije() {
-		s.clear();
+		//s.clear();
+
 		a.clear();
 	}
-	void UcitajSelekciju() {
+	void UcitajSelekciju(Image* i) {
 		int dosta = 1;
 		pravougaonici pp;
 		std::cout << "Unesite redom pravougaonike jedne selekcije: "<<std::endl;
@@ -44,11 +45,11 @@ public:
 		std::cout << "1. Aktivna   0. Neaktivna" << std::endl;
 		bool stanje;
 		std::cin >> stanje;
-		a.push_back(stanje);
-		s.push_back(&se);	
+		i->dodajSelekciju(ime,pp,stanje);
 	}
+
 	~MeniZaSelekcije() {
-		s.clear();
+	//	s.clear();
 		a.clear();
 	}
 };

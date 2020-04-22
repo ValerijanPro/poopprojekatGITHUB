@@ -14,12 +14,12 @@
 class BMPwriter {
 public:
 
-	void upisi(Image* i,std::string ImeFajla) {
+	void upisi(Image* im,std::string ImeFajla) {
 		std::fstream file(ImeFajla, std::ios::binary | std::ios::out);
 		//if (!file.is_open) {
 			//gresku napraviti
 		//}
-		Layer* lejer = i->konstruisiFinalniLayer();
+		Layer* lejer = im->konstruisiFinalniLayer();
 		
 
 		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
@@ -55,10 +55,14 @@ public:
 				Piksel* p1 = &lejer->getPixel(i, j);
 
 				
-			/*	if (se.USelekciji(i,j)) {
-					print++;
-					p1->oboji(0xFF, 0xFF, 0xFF);
-				}*/
+				for (auto q : im->getSelekcija()) {
+					if (q->getStanje() && q->USelekciji(i, j)){ 
+						p1->oboji(0xFF, 0xFF, 0xFF); 
+					}
+					
+				}
+					
+				
 				
 				char temp;
 				

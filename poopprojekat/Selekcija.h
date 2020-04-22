@@ -1,12 +1,12 @@
-#pragma once
+//#pragma once
 #include<iostream>
 
 #include <vector>
 #include<string>
-#include"Piksel.h"
+//#include"Piksel.h"
 #include"Layer.h"
-#include"Image.h"
-#include"BMPcitac.h"
+//#include"Image.h"
+//#include"BMPcitac.h"
 #include"Pravougaonik.h"
 #include <map>
 typedef std::vector<Pravougaonik> pravougaonici;
@@ -14,6 +14,7 @@ class Selekcija {
 	std::string ime;
 	pravougaonici niz;
 	bool aktivna;
+
 public:
 	Selekcija(std::string s, pravougaonici p) :ime(s){
 
@@ -29,4 +30,6 @@ public:
 		 return 0;
 		
 	}
+	void setStanje(bool s) { aktivna = s; }
+	bool getStanje()const { return aktivna; }
 };
