@@ -16,14 +16,15 @@ class Image{
 	//typedef std::vector<Layer> slojevi;
 	mapa layers;
 	int sirina, visina,brlejera;
+	
 	int brbitapopixelu;
 	selekcije sel;
 	op operacije;
 public:
-	Image(int s=0, int v=0,int b=0,int bbpp=0) {
+	Image(int s=0, int v=0,int bbpp=0) {
 		sirina = s;
 		visina = v;
-		brlejera = b;
+		brlejera = 0;
 		brbitapopixelu = bbpp;
 		sel.clear();
 		operacije.clear();
@@ -151,7 +152,8 @@ public:
 			}
 			sirina = l->getSirina();
 			//matricu piksela prosiris praznim pikselima tj crnim TREBA PROVIDNIM
-		}		if (l->getSirina() < sirina) {
+		}		
+		if (l->getSirina() < sirina) {
 			// l resize sirina
 			l->realocirajPovecaj(sirina, l->getvisina());
 		}
@@ -164,6 +166,7 @@ public:
 			layers[pozicija] = l;
 			sirina = l->getSirina();
 			visina = l->getvisina();
+			brlejera++;
 		}
 		else {
 			throw GreskaPostojiKljuc("Greska vec postoji dati layer");

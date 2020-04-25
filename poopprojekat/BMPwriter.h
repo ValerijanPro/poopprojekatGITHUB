@@ -77,16 +77,16 @@ public:
 						}
 					}
 				}
-				else {
-					for (auto q : image->getOperacije()) {
-						q->run(s, ar);
-					}
-					NoviPiksel p4 = s.top();
+				//else {
+				//	for (auto q : image->getOperacije()) {
+				//		q->run(s, ar);
+				//	}
+				//	NoviPiksel p4 = s.top(); // ovde puca kad nema operacija
 
-					p1 = &p4.getPiksel();
-					s.pop();
-					ar.pop_back();
-				}
+				//	p1 = &p4.getPiksel();
+				//	s.pop();
+				//	ar.pop_back();
+				//}
 			
 				
 				

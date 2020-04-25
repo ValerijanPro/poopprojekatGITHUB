@@ -9,7 +9,7 @@
 #include"BMPwriter.h"
 class BMPcitac {
 public:
-	Image* ucitaj(std::string s) {
+	Layer* ucitaj(std::string s,Image* ii) {
 		std::ifstream binarnifajl;
 		binarnifajl.open(s, std::ios::in | std::ios::binary);
 		
@@ -83,15 +83,22 @@ public:
 			}
 		}
 		
-		BMPwriter bmpwriter;
-		Image *i = new Image(l->getSirina(), l->getvisina(), 1,dibzaglavlje.brBitaPoPixelu);
+		//BMPwriter bmpwriter;
+//		Image *i = new Image(l->getSirina(), l->getvisina(), 1,dibzaglavlje.brBitaPoPixelu);
 		//Image* i = (Image*)malloc(sizeof(Image*));
-
+		Image* i = new Image(l->getSirina(), l->getvisina(), dibzaglavlje.brBitaPoPixelu);
+	//	Image* i = (Image*)malloc(sizeof(Image*));
+		i->DodajSloj(l, 0);
+		ii->setBrBitaPoPixelu(dibzaglavlje.brBitaPoPixelu);
+		ii->DodajSloj(l, 0);
+		return l;
 		//Layer* lej = (Layer*)malloc(sizeof(Layer));
 		//lej = &l;
-		i->DodajSloj(l, 0);
+		
+	/*	i->DodajSloj(l, 0);
 		Layer* lejer = i->konstruisiFinalniLayer();
-		return i;
+		return i;*/
+
 
 	//	bmpwriter.upisi(&i);
 	}

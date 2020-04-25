@@ -14,12 +14,17 @@
 #include"pamcitac.h"
 #include"pamwriter.h"
 #include"MainMeni.h"
-
+#include"tinyxml2.h"
+#include"tinyxml2.cpp"
+//using namespace xmlparser;
+using namespace tinyxml2;
 void main() {
 	MainMeni mm = MainMeni();
 	MeniZaSelekcije ms;
 	int Radi = 1;
 	Image* slika=new Image();
+	
+	
 	while (1) {
 		mm.IspisiMainMeni();
 		int opcija = mm.UcitajOpciju();
@@ -32,7 +37,7 @@ void main() {
 			if (um.getFormat() == 0) {
 				continue;
 			}
-			slika=um.UcitajSliku();
+			slika=um.UcitajSliku(slika);
 			continue;
 		}
 		else if (opcija == 2) {
@@ -43,6 +48,10 @@ void main() {
 		else if (opcija == 3) {
 			MeniZaOperacije mo;
 			mo.printujOperacije(slika);
+			continue;
+		}
+		else if (opcija == 4) {
+
 			continue;
 		}
 		else if (opcija == 5) {
@@ -67,10 +76,10 @@ void main() {
 
 	PamCitac p = PamCitac();
 	//p.ucitaj("p7_3x2_12b_3d.pam");
-	p.ucitaj("IMG_20190809_154608083.pam");
+//	p.ucitaj("IMG_20190809_154608083.pam");
 	BMPcitac b=BMPcitac();
 
-	b.ucitaj("RAY.BMP");
+	//b.ucitaj("RAY.BMP");
 	//BLK,WHT,VENUS,LAND,LAND2, BLU SKORO
 	 stek s;
 	 NoviPiksel p1 = NoviPiksel(3, 3, 3);

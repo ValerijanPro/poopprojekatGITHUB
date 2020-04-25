@@ -15,14 +15,17 @@ private:
 	matrica m;
 	
 	int sirina, visina;
+	int opacity;
 public:
 	int getSirina()const { return sirina; }
 	int getvisina()const { return visina; }
+	int getOpacity()const { return opacity; }
+	void setOpacity(int x) { opacity = x; }
 	Layer( int sir, int vis){
 //	Layer( Image otac){
 		sirina = sir;
 		visina = vis;
-		
+		opacity = 100;
 		
 		for (int i = 0; i < sirina; i++) {
 			nizpiksela pikseli;
