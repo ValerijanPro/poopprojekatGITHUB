@@ -19,7 +19,13 @@ public:
 		std::fstream file(imeFajla, std::ios::binary | std::ios::out);
 		
 		//file.open("testiram.pam");
-		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer();
+		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite 22 za kraj)" << std::endl;
+		int xx = 10; aktivni ak; ak.clear();
+		while (xx != 22) {
+			std::cin >> xx;
+			ak.push_back(xx);
+		}
+		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
 		//DIBzaglavlje1 dibzaglavlje = DIBzaglavlje1(lejer->getSirina(), lejer->getvisina(), lejer->getSirina() * lejer->getvisina());
 		PamHeder pamheder = PamHeder(lejer->getSirina(), lejer->getvisina());
 		//BMPzaglavlje1 bmpzaglavlje = BMPzaglavlje1(lejer->getSirina() * lejer->getvisina() * 3 + 122);

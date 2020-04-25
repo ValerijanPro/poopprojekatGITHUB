@@ -11,6 +11,7 @@
 #include"Pravougaonik.h"
 #include"DIBzaglavlje1.h"
 #include"BMPzaglavlje1.h"
+typedef std::vector<int> aktivni;
 class BMPwriter {
 public:
 	 
@@ -19,7 +20,13 @@ public:
 		//if (!file.is_open) {
 			//gresku napraviti
 		//}
-		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer();
+		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite 22 za kraj)" << std::endl;
+		int xx = 10; aktivni ak; ak.clear();
+		while (xx != 22) {
+			std::cin >> xx;
+			ak.push_back(xx);
+		}
+		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
 		
 
 		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
@@ -77,7 +84,7 @@ public:
 						}
 					}
 				}
-				/*else { //TODO: uvek mora da ima push
+				else { //TODO: uvek mora da ima push
 					for (auto q : image->getOperacije()) {
 						q->run(s, ar);
 					}
@@ -86,7 +93,7 @@ public:
 					p1 = &p4.getPiksel();
 					s.pop();
 					ar.pop_back();
-				}*/
+				}
 			
 				
 				

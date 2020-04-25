@@ -15,7 +15,7 @@ public:
 	//	std::shared_ptr<ioperation>p1 = std::make_shared<Push>(&Push(0));
 		//ioperation* iop = new Push(0);
 	//	i->getOperacije().push_back(iop);
-		i->dodajPush();
+		
 		
 		while (1) {
 

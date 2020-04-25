@@ -69,7 +69,7 @@ public:
 						char blue = temp;
 						//binarnifajl.read((char*)& temp, sizeof(temp));
 						/*	char opacity = temp;*/
-						l->overwritepixel(i, j, Piksel(red, green, blue, 0, 0));
+						l->overwritepixel(i, j, Piksel(red, green, blue, 0, 255));
 					}
 				}
 			}
@@ -105,7 +105,7 @@ public:
 						if(temp==0)
 							l->overwritepixel(i, j, Piksel(0, 0, 0, 0, 0));
 						else {
-							l->overwritepixel(i, j, Piksel(255, 255, 255, 0, 0));
+							l->overwritepixel(i, j, Piksel(255, 255, 255, 0, 255));
 						}
 					}
 				}
@@ -145,7 +145,7 @@ public:
 						char red = temp;
 						//binarnifajl.read((char*)& temp, sizeof(temp));
 						/*	char opacity = temp;*/
-						l->overwritepixel(i, j, Piksel(red, green, blue, 0, 0));
+						l->overwritepixel(i, j, Piksel(red, green, blue, 0, 255));
 					}
 				}
 			}

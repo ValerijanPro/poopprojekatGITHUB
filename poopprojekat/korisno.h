@@ -7,7 +7,13 @@
 #include<iostream>
 #include<fstream>
 #include <vector>
-
+typedef std::vector<int> aktivni;
+bool inAktivni(int x,aktivni a){
+	for (auto i:a) {
+		if (i == x) return 1;
+	}
+	return 0;
+}
 int maximum(int a, int b, int c) {
 	if (a > b)
 	{

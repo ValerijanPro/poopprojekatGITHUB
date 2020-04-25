@@ -112,7 +112,7 @@ public:
 			
 				auto kraj = m[j].end();
 
-				m[j].insert(kraj, vis - visina, Piksel());
+				m[j].insert(kraj, vis - visina, Piksel(0,0,0,0,0));
 			
 		}
 		//std::cout << std::endl;
@@ -125,7 +125,7 @@ public:
 			niz.clear();
 			for (int i = 0; i < vis; i++) {
 
-				niz.push_back(Piksel());
+				niz.push_back(Piksel(0, 0, 0, 0, 0));
 			}
 			auto kraj = m.end();
 			m.insert(kraj, niz);

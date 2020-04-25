@@ -70,7 +70,7 @@ public:
 					binarnifajl.read((char*)& temp, sizeof(temp));
 					char red = temp;
 				
-					l->overwritepixel(i, j, Piksel(red, green, blue, 0, 255));
+					l->overwritepixel(i, j, Piksel(red, green, blue, 0, 127));
 
 				}
 				while ((i % 4) != 0) {
