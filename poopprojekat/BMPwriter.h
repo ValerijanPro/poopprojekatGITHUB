@@ -77,7 +77,7 @@ public:
 						}
 					}
 				}
-				else {
+				/*else { //TODO: uvek mora da ima push
 					for (auto q : image->getOperacije()) {
 						q->run(s, ar);
 					}
@@ -86,7 +86,7 @@ public:
 					p1 = &p4.getPiksel();
 					s.pop();
 					ar.pop_back();
-				}
+				}*/
 			
 				
 				
