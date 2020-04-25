@@ -178,7 +178,7 @@ public:
 		
 	}
 	std::shared_ptr<Layer> konstruisiFinalniLayer() {
-		return layers[0];
+		return layers[0];// TODO: PRVO OVO OD ZIZE, a posle toga AKTIVNE LEJERE, a posle toga UVEK PUSH PAJA
 	}
 	void ObrisiSloj() {
 
