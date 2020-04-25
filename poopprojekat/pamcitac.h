@@ -15,7 +15,7 @@
 
 class PamCitac {
 public: 
-	Image* ucitaj(std::string s) {
+	std::shared_ptr<Layer> ucitaj(std::string s) {
 
 
 		std::ifstream binarnifajl;
@@ -43,7 +43,7 @@ public:
 		maxval = GetBroj(pamheder.maxval);
 		brbajtova = BrBajtova(maxval);
 		dubina = GetBroj(pamheder.dubina);
-		Layer *l = new Layer(sirina, visina);
+		std::shared_ptr<Layer> l = std::make_shared<Layer>(sirina, visina);
 		int paja = 0;
 		std::cout << binarnifajl.width();
 		//binarnifajl.seekg(66968);
@@ -210,7 +210,8 @@ public:
 		Image *i = new Image(l->getSirina(),l->getvisina(),brbajtova*8);
 		i->DodajSloj(l, 0);
 		i->setBrBitaPoPixelu(brbajtova * 8);
-		return i;
+		//return i;
+		return l;
 		/*PAMwriter pw;
 		pw.upisi(&i);
 		*/

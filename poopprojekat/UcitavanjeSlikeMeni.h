@@ -24,21 +24,24 @@ public:
 		PrintFormati();
 		std::cin >> format;
 	}
-	Image* UcitajSliku() {
-		Image* i=new Image();
+	Image* UcitajSliku(Image* i) {
+		//Image* i=new Image();
 		std::cout << "Unesite ime slike, bez ekstenzije" << std::endl;
 		std::cin >> ImeSlike;
 		if (format == 1) {
 			ImeSlike += ".bmp";
 			b = BMPcitac();
-			i=b.ucitaj(ImeSlike);
-			Layer* lejer = i->konstruisiFinalniLayer();
-			std::cout << "opet";
+			
+			std::shared_ptr<Layer> p1=b.ucitaj(ImeSlike);
+			//Layer* lejer = i->konstruisiFinalniLayer();
+			i->DodajSloj(p1, i->getBrlejera());
+			//std::cout << "opet";
 		}
 		else if (format == 2) {
 			ImeSlike += ".pam";
 			p = PamCitac();
-			i=p.ucitaj(ImeSlike);
+			std::shared_ptr<Layer> p1 = p.ucitaj(ImeSlike);
+			i->DodajSloj(p1, i->getBrlejera());
 		}
 		else {
 

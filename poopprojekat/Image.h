@@ -9,7 +9,7 @@
 #include"Selekcija.h"
 #include"Timotije.h"
 //typedef std::vector<Layer*> mapa;
-typedef std::map<int, Layer*> mapa;
+typedef std::map<int, std::shared_ptr<Layer>> mapa;
 typedef std::vector<Selekcija> selekcije;
 typedef std::vector<std::shared_ptr<ioperation>> op;
 class Image{
@@ -20,10 +20,10 @@ class Image{
 	selekcije sel;
 	op operacije;
 public:
-	Image(int s=0, int v=0,int b=0,int bbpp=0) {
+	Image(int s=0, int v=0,int bbpp=0) {
 		sirina = s;
 		visina = v;
-		brlejera = b;
+		brlejera = 0;
 		brbitapopixelu = bbpp;
 		sel.clear();
 		operacije.clear();
@@ -122,7 +122,7 @@ public:
 		
 	}
 	selekcije& getSelekcije() { return sel; }
-	void DodajSloj( Layer* l,int pozicija) { 
+	void DodajSloj(std::shared_ptr<Layer>  l,int pozicija) {
 
 
 		if ( l->getvisina() > visina) {
@@ -151,7 +151,8 @@ public:
 			}
 			sirina = l->getSirina();
 			//matricu piksela prosiris praznim pikselima tj crnim TREBA PROVIDNIM
-		}		if (l->getSirina() < sirina) {
+		}		
+		if (l->getSirina() < sirina) {
 			// l resize sirina
 			l->realocirajPovecaj(sirina, l->getvisina());
 		}
@@ -164,6 +165,7 @@ public:
 			layers[pozicija] = l;
 			sirina = l->getSirina();
 			visina = l->getvisina();
+			brlejera++;
 		}
 		else {
 			throw GreskaPostojiKljuc("Greska vec postoji dati layer");
@@ -175,7 +177,7 @@ public:
 		//}
 		
 	}
-	Layer* konstruisiFinalniLayer() {
+	std::shared_ptr<Layer> konstruisiFinalniLayer() {
 		return layers[0];
 	}
 	void ObrisiSloj() {
@@ -192,8 +194,11 @@ private:
 		sirina = s.sirina;
 		brlejera = s.brlejera;
 		for (auto i = s.layers.begin(); i != s.layers.end(); i++) {
+			std::shared_ptr<Layer> l = (*i).second;
+			layers[(*i).first] = l;
+/*
 			Layer l = *(*i).second;
-			layers[(*i).first] =&l;
+			layers[(*i).first] =&l;*/
 			//((*i).second).realocirajPovecaj(sirina, l->getvisina());
 		}
 

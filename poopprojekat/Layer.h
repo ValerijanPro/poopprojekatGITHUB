@@ -115,8 +115,8 @@ public:
 				m[j].insert(kraj, vis - visina, Piksel());
 			
 		}
-		std::cout << std::endl;
-		std::cout << *this;
+		//std::cout << std::endl;
+		//std::cout << *this;
 		nizpiksela niz;
 		//dodam koliko fali uspravnih stangli
 		for (int j = 0; j < sir - sirina; j++) {
@@ -136,8 +136,8 @@ public:
 		//nove vrednosti sirine i visine
 		sirina = sir;
 		visina = vis;
-		std::cout << std::endl;
-		std::cout << *this;
+		//std::cout << std::endl;
+		//std::cout << *this;
 	}
 
 	Layer(const Layer& s) { kopiraj(s); }

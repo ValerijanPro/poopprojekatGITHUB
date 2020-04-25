@@ -32,7 +32,7 @@ void main() {
 			if (um.getFormat() == 0) {
 				continue;
 			}
-			slika=um.UcitajSliku();
+			slika=um.UcitajSliku(slika);
 			continue;
 		}
 		else if (opcija == 2) {

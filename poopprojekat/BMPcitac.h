@@ -9,7 +9,7 @@
 #include"BMPwriter.h"
 class BMPcitac {
 public:
-	Image* ucitaj(std::string s) {
+	std::shared_ptr<Layer> ucitaj(std::string s) {
 		std::ifstream binarnifajl;
 		binarnifajl.open(s, std::ios::in | std::ios::binary);
 		
@@ -31,8 +31,8 @@ public:
 
 		bmpzaglavlje.zamenibitove();
 
-		Layer* l = new Layer(dibzaglavlje.sirinaSlike, dibzaglavlje.visinaSlike);
-
+		//Layer* l = new Layer(dibzaglavlje.sirinaSlike, dibzaglavlje.visinaSlike);
+		std::shared_ptr<Layer> l = std::make_shared<Layer>(dibzaglavlje.sirinaSlike, dibzaglavlje.visinaSlike);
 		if (dibzaglavlje.brBitaPoPixelu == 32) {
 			for (int j = dibzaglavlje.visinaSlike - 1; j > 0; j--) { // ako je 32
 				int i = 0;
@@ -76,22 +76,24 @@ public:
 				while ((i % 4) != 0) {
 					char temp;
 					binarnifajl.read((char*)& temp, sizeof(temp));
+					binarnifajl.read((char*)& temp, sizeof(temp));
+					binarnifajl.read((char*)& temp, sizeof(temp));
 					i++;
 				}
 
 				//jos kolko padinga ima
 			}
 		}
-		
-		BMPwriter bmpwriter;
-		Image *i = new Image(l->getSirina(), l->getvisina(), 1,dibzaglavlje.brBitaPoPixelu);
-		//Image* i = (Image*)malloc(sizeof(Image*));
+		return l;
+		//BMPwriter bmpwriter;
+		//Image *i = new Image(l->getSirina(), l->getvisina(), 1,dibzaglavlje.brBitaPoPixelu);
+		////Image* i = (Image*)malloc(sizeof(Image*));
 
-		//Layer* lej = (Layer*)malloc(sizeof(Layer));
-		//lej = &l;
-		i->DodajSloj(l, 0);
-		Layer* lejer = i->konstruisiFinalniLayer();
-		return i;
+		////Layer* lej = (Layer*)malloc(sizeof(Layer));
+		////lej = &l;
+		//i->DodajSloj(l, 0);
+		//Layer* lejer = i->konstruisiFinalniLayer();
+		//return i;
 
 	//	bmpwriter.upisi(&i);
 	}

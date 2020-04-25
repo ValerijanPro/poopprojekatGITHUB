@@ -19,7 +19,7 @@ public:
 		//if (!file.is_open) {
 			//gresku napraviti
 		//}
-		Layer* lejer = image->konstruisiFinalniLayer();
+		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer();
 		
 
 		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
