@@ -152,9 +152,6 @@
     <ClInclude Include="MeniZaOperacije.h">
       <Filter>Header Files\meniji</Filter>
     </ClInclude>
-    <ClInclude Include="XMLwriter.h">
-      <Filter>Header Files\XML</Filter>
-    </ClInclude>
     <ClInclude Include="EksportXMLmeni.h">
       <Filter>Header Files\meniji</Filter>
     </ClInclude>
@@ -175,6 +172,12 @@
     </ClInclude>
     <ClInclude Include="Selekcija.h">
       <Filter>Header Files\SELEKCIJE</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLIMAGEwriter.h">
+      <Filter>Header Files\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLOPERATIONwriter.h">
+      <Filter>Header Files\XML</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

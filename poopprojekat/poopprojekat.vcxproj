@@ -171,7 +171,8 @@
     <ClInclude Include="Timotije.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="UcitavanjeSlikeMeni.h" />
-    <ClInclude Include="XMLwriter.h" />
+    <ClInclude Include="XMLIMAGEwriter.h" />
+    <ClInclude Include="XMLOPERATIONwriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
