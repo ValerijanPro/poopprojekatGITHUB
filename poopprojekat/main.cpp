@@ -51,6 +51,13 @@ void main() {
 			continue;
 		}
 		else if (opcija == 5) {
+			int poz;
+			std::cout << "Unesite redni broj sloja koji brisete: " << std::endl;
+			std::cin >> poz;
+			slika->ObrisiLejer(poz);
+			continue;
+		}
+		else if (opcija == 6) {
 		//	BMPwriter bmp = BMPwriter();
 			//bmp.upisi(slika);
 			IspisSlikeMeni im = IspisSlikeMeni();

@@ -28,6 +28,12 @@
     <Filter Include="Header Files\XML">
       <UniqueIdentifier>{9bbfc2d6-1226-43ec-a5db-7cfa90195daf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\IMAGE">
+      <UniqueIdentifier>{832267d2-2d6c-4a05-ae30-4da0c3e13010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SELEKCIJE">
+      <UniqueIdentifier>{f8beb555-2f59-42e3-8b53-366e080bd6fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -38,15 +44,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Piksel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Layer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GreskaPostojiKljuc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -57,12 +54,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="operacije.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pravougaonik.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Selekcija.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Add.h">
@@ -169,6 +160,21 @@
     </ClInclude>
     <ClInclude Include="tinyxml2.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Layer.h">
+      <Filter>Header Files\IMAGE</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\IMAGE</Filter>
+    </ClInclude>
+    <ClInclude Include="Piksel.h">
+      <Filter>Header Files\IMAGE</Filter>
+    </ClInclude>
+    <ClInclude Include="Pravougaonik.h">
+      <Filter>Header Files\SELEKCIJE</Filter>
+    </ClInclude>
+    <ClInclude Include="Selekcija.h">
+      <Filter>Header Files\SELEKCIJE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

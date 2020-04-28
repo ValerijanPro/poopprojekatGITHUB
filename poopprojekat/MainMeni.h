@@ -16,8 +16,8 @@ public:
 		std::cout << "2. Rad sa selekcijama " << std::endl;
 		std::cout << "3. Operacije nad slikom" << std::endl;
 		std::cout << "4. Eksportovanje slike" << std::endl;
-		
-		std::cout << "5. Ispis slike u zeljenom formatu" << std::endl;
+		std::cout << "5. Brisanje odredjenog sloja" << std::endl; // TODO: uraditi: ucitavanje iz 24, pa ucitavanje iz 32 BMP probati rucno
+		std::cout << "6. Ispis slike u zeljenom formatu" << std::endl;
 		std::cout << "0. Kraj rada" << std::endl;
 	}
 	int UcitajOpciju() {

@@ -38,6 +38,16 @@ public:
 	// 2. funkcija za dodavanje lejera, i ako je sirina i visina lejera veca od image sir i visine, onda
 	// prosiriti sirinu i visinu u svim lejerima
 	// tj ako dodas lejer koji je veci od ostalih, svi ostali moraju da porastu
+	void ObrisiLejer(int pozicija) {
+		if (layers[pozicija] == nullptr) return; // THROW GRESKA U INDEKSIRANJU
+		std::shared_ptr<Layer> temp = layers[pozicija];
+		for (int i = pozicija; i != brlejera - 1; i++) {
+			layers[i] = layers[i + 1]; 
+		}
+		layers[brlejera - 1] = temp;
+		layers[brlejera-1]->~Layer();
+		brlejera--;
+	}
 	op& getOperacije() { return operacije; }
 	void dodajPush() {
 		operacije.push_back(std::make_shared<Push>(0));
@@ -246,9 +256,7 @@ public:
 
 
 	}
-	void ObrisiSloj() {
-
-	}
+	
 	aktivni& getAkt() { return akt; }
 	void setAkt(aktivni& a) { akt = a; }
 	mapa& getLayers() { return layers; }
@@ -257,6 +265,7 @@ public:
 	int getBrlejera()const { return brlejera; }
 	int getBrBitaPoPixelu()const { return brbitapopixelu; }
 	void setBrBitaPoPixelu(int bb) { brbitapopixelu = bb; }
+
 private:
 	void kopiraj(const Image& s) {
 		visina = s.visina;

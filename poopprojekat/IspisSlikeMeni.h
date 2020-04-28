@@ -19,7 +19,7 @@ public:
 		std::cout << "3. Image" << std::endl;
 		std::cout << " 0. Nazad na Glavni Meni" << std::endl;
 		std::cin >> format;
-		if (format !=1 && format!=2 && format!=3) return;
+		if (format !=1 && format!=2 && format!=3) return; // THROW GRESKA
 		std::cout << "Unesite ime izlaznog fajla bez ekstenzije: " << std::endl;
 		std::cin >> imeFajla;
 		if (format == 1) {
