@@ -29,4 +29,6 @@ public:
 	}
 	void setStanje(bool a) { aktivna = a; }
 	bool getStanje()const { return aktivna; }
+	std::string getIme()const { return ime; }
+	pravougaonici& getNiz() { return niz; }
 };

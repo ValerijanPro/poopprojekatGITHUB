@@ -29,4 +29,5 @@ public:
 		NoviPiksel p2 = NoviPiksel(r, g, b,  op);
 		s.push(p2);
 	}
+	int getValue()const { return broj; }
 };

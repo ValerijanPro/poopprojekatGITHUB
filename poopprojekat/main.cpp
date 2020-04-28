@@ -14,7 +14,7 @@
 #include"pamcitac.h"
 #include"pamwriter.h"
 #include"MainMeni.h"
-
+#include"tinyxml2.h"
 void main() {
 	MainMeni mm = MainMeni();
 	MeniZaSelekcije ms;
@@ -43,6 +43,11 @@ void main() {
 		else if (opcija == 3) {
 			MeniZaOperacije mo;
 			mo.printujOperacije(slika);
+			continue;
+		}
+		else if (opcija == 4) {
+			EksportXMLmeni e;
+			slika=e.ucitajImeFajla(slika);
 			continue;
 		}
 		else if (opcija == 5) {

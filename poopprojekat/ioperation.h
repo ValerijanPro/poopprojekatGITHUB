@@ -16,4 +16,5 @@ typedef std::vector<NoviPiksel> argumenti;//NoviPiksel
 	 
 public:
 	virtual void run(stek& s,argumenti arg)=0; // prosledim stack i ARGUMENTS
+	virtual int getValue()const = 0;
 };

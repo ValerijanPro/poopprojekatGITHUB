@@ -41,7 +41,7 @@ public:
 		if (i > sirina || j > visina) throw GreskaPostojiKljuc();
 		return m[i][j];
 	}
-
+	//matrica& getM() { return m; }
 	friend std::ostream& operator<<(std::ostream& os, const Layer& l) {
 
 		

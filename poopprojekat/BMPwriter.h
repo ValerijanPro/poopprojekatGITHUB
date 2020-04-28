@@ -20,10 +20,11 @@ public:
 		//if (!file.is_open) {
 			//gresku napraviti
 		//}
-		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite 22 za kraj)" << std::endl;
+		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite -1 za kraj)" << std::endl;
 		int xx = 10; aktivni ak; ak.clear();
-		while (xx != 22) {
+		while (1) {
 			std::cin >> xx;
+			if (xx == -1) break;
 			ak.push_back(xx);
 		}
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);

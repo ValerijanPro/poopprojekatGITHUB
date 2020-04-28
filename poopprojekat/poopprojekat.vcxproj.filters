@@ -25,10 +25,16 @@
     <Filter Include="Header Files\PAM">
       <UniqueIdentifier>{9af3bbc5-983a-4302-83a7-b098948c1eff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\XML">
+      <UniqueIdentifier>{9bbfc2d6-1226-43ec-a5db-7cfa90195daf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Header Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +160,15 @@
     </ClInclude>
     <ClInclude Include="MeniZaOperacije.h">
       <Filter>Header Files\meniji</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLwriter.h">
+      <Filter>Header Files\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="EksportXMLmeni.h">
+      <Filter>Header Files\meniji</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

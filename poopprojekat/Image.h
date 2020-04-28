@@ -14,22 +14,22 @@ typedef std::map<int, std::shared_ptr<Layer>> mapa;
 typedef std::vector<Selekcija> selekcije;
 typedef std::vector<std::shared_ptr<ioperation>> op;
 
-class Image{
+class Image {
 	//typedef std::vector<Layer> slojevi;
 	mapa layers;
-	int sirina, visina,brlejera;
+	int sirina, visina, brlejera;
 	int brbitapopixelu;
 	selekcije sel;
 	op operacije;
 	aktivni akt;
 public:
-	Image(int s=0, int v=0,int bbpp=0) {
+	Image(int s = 0, int v = 0, int bbpp = 0) {
 		sirina = s;
 		visina = v;
 		brlejera = 0;
 		brbitapopixelu = bbpp;
 		sel.clear();
-		
+
 		operacije.clear();
 		dodajPush();
 	}
@@ -117,28 +117,28 @@ public:
 		}
 
 		else return 0;
-	
+
 	}
 
-	void dodajSelekciju(std::string s,pravougaonici pp,bool stanje) {
+	void dodajSelekciju(std::string s, pravougaonici pp, bool stanje) {
 		Selekcija* nova = new Selekcija(s, pp);
 		nova->setStanje(stanje);
 		sel.push_back(*nova);
-		
+
 	}
 	selekcije& getSelekcije() { return sel; }
-	void DodajSloj(std::shared_ptr<Layer>  l,int pozicija) {
+	void DodajSloj(std::shared_ptr<Layer>  l, int pozicija) {
 
 
-		if ( l->getvisina() > visina) {
+		if (l->getvisina() > visina) {
 			//realociram sve lejere
 			for (auto i = layers.begin(); i != layers.end(); i++) {
-				
-				(*i).second->realocirajPovecaj(sirina,l->getvisina());
-		
+
+				(*i).second->realocirajPovecaj(sirina, l->getvisina());
+
 			}
 			visina = l->getvisina();
-	
+
 			// na poziciju upisati novi lejer
 
 			//matricu piksela prosiris praznim pikselima tj crnim TREBA PROVIDNIM
@@ -156,7 +156,7 @@ public:
 			}
 			sirina = l->getSirina();
 			//matricu piksela prosiris praznim pikselima tj crnim TREBA PROVIDNIM
-		}		
+		}
 		if (l->getSirina() < sirina) {
 			// l resize sirina
 			l->realocirajPovecaj(sirina, l->getvisina());
@@ -166,7 +166,7 @@ public:
 			l->realocirajPovecaj(l->getSirina(), visina);
 		}
 		//insert na poziciju
-		if (layers.count(pozicija)==0) {
+		if (layers.count(pozicija) == 0) {
 			layers[pozicija] = l;
 			sirina = l->getSirina();
 			visina = l->getvisina();
@@ -180,75 +180,78 @@ public:
 		//	//layers.push_back(l);
 		//	brlejera++;
 		//}
-		
+
 	}
 	std::shared_ptr<Layer> konstruisiFinalniLayer(aktivni a) {
 		//return layers[0];// TODO: PRVO OVO OD ZIZE, a posle toga AKTIVNE LEJERE, a posle toga UVEK PUSH PAJA
 
 		std::shared_ptr<Layer> lejer = std::make_shared<Layer>(sirina, visina);
-		
-		
-			for (int j = visina - 1; j > 0; j--) {
-				int i = 0;
-				for (i = 0; i < sirina; i++) {
-					double A = 0, G = 0, R = 0, B = 0,A2=0;
-					double Apret = 0, Atren = 0, Rpret = 0, Rtren = 0, Bpret = 0, Btren = 0, Gpret = 0, Gtren = 0;
 
-					int k = 0;
 
-					while (!inAktivni(k, a)) { k++; }
+		for (int j = visina - 1; j > 0; j--) {
+			int i = 0;
+			for (i = 0; i < sirina; i++) {
+				double A = 0, G = 0, R = 0, B = 0, A2 = 0;
+				double Apret = 0, Atren = 0, Rpret = 0, Rtren = 0, Bpret = 0, Btren = 0, Gpret = 0, Gtren = 0;
 
-					A= layers[k]->getPixel(i, j).getOpacity()*1.0/255;
-					//Piksel p = layers[0]->getPixel(i, j);
-					//uint8_t temp = (uint8_t)layers[0]->getPixel(i, j).getOpacity();
-					Apret = A;
-					//A = temp / 255;
+				int k = 0;
+
+				while (!inAktivni(k, a)) { k++; }
+
+				A = layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255;
+				//Piksel p = layers[0]->getPixel(i, j);
+				//uint8_t temp = (uint8_t)layers[0]->getPixel(i, j).getOpacity();
+				Apret = A;
+				//A = temp / 255;
+				k++;
+				while (k != brlejera) {
+					if (!inAktivni(k, a)) { k++; continue; }
+					Atren = layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255;
+					A = A + (1 - Apret) * Atren;
+					Apret = Atren;
 					k++;
-					while (k != brlejera) {
-						if (!inAktivni(k, a)) { k++; continue; }
-						Atren= layers[k]->getPixel(i, j).getOpacity()*1.0/255;
-						A = A + (1 - Apret) * Atren;
-						Apret = Atren;
-						k++;
-					}
-					k = 0; 	while (!inAktivni(k, a)) { k++; }
-					
-					A2 = layers[k]->getPixel(i, j).getOpacity() *1.0/ 255; Apret = A2;
-					R = layers[k]->getPixel(i, j).getR() * ((layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255)*1.0 / A);
-					G = layers[k]->getPixel(i, j).getG() * ((layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255) *1.0/ A);
-					B = layers[k]->getPixel(i, j).getB() * ((layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255)*1.0 / A);
-					Rpret = R;
-					Gpret = G;
-					Bpret = B;
-					k++;
-					while (k != brlejera) {
-						if (!inAktivni(k, a)) { k++; continue; }
-						Atren = layers[k]->getPixel(i, j).getOpacity() * 1.0 /255;
-						Rtren = layers[k]->getPixel(i, j).getR() ;
-						Gtren = layers[k]->getPixel(i, j).getG();
-						Btren = layers[k]->getPixel(i, j).getB();
-						R = R + Rtren * (1 - Apret) * (Atren *1.0/ A);
-						G = G + Gtren * (1 - Apret) * (Atren *1.0/ A);
-						B = B + Btren * (1 - Apret) * (Atren *1.0/ A);
-						Rpret = Rtren;
-						Gpret = Gtren;
-						Bpret = Btren;
-						Apret = Atren;
-						k++;
-					}
-
-
-					lejer->overwritepixel(i, j, Piksel(R, G, B, 0,A));
 				}
+				k = 0; 	while (!inAktivni(k, a)) { k++; }
+
+				A2 = layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255; Apret = A2;
+				R = layers[k]->getPixel(i, j).getR() * ((layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255) * 1.0 / A);
+				G = layers[k]->getPixel(i, j).getG() * ((layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255) * 1.0 / A);
+				B = layers[k]->getPixel(i, j).getB() * ((layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255) * 1.0 / A);
+				Rpret = R;
+				Gpret = G;
+				Bpret = B;
+				k++;
+				while (k != brlejera) {
+					if (!inAktivni(k, a)) { k++; continue; }
+					Atren = layers[k]->getPixel(i, j).getOpacity() * 1.0 / 255;
+					Rtren = layers[k]->getPixel(i, j).getR();
+					Gtren = layers[k]->getPixel(i, j).getG();
+					Btren = layers[k]->getPixel(i, j).getB();
+					R = R + Rtren * (1 - Apret) * (Atren * 1.0 / A);
+					G = G + Gtren * (1 - Apret) * (Atren * 1.0 / A);
+					B = B + Btren * (1 - Apret) * (Atren * 1.0 / A);
+					Rpret = Rtren;
+					Gpret = Gtren;
+					Bpret = Btren;
+					Apret = Atren;
+					k++;
+				}
+
+
+				lejer->overwritepixel(i, j, Piksel(R, G, B, 0, A));
 			}
-			return lejer;
-		
+		}
+		return lejer;
+
 
 
 	}
 	void ObrisiSloj() {
 
 	}
+	aktivni& getAkt() { return akt; }
+	void setAkt(aktivni& a) { akt = a; }
+	mapa& getLayers() { return layers; }
 	int getSirina()const { return sirina; }
 	int getvisina()const { return visina; }
 	int getBrlejera()const { return brlejera; }

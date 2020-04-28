@@ -7,6 +7,7 @@
 #include"IspisSlikeMeni.h"
 #include"MeniZaSelekcije.h"
 #include"MeniZaOperacije.h"
+#include"EksportXMLmeni.h"
 class MainMeni {
 public:
 	void IspisiMainMeni() {

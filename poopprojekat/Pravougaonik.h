@@ -21,4 +21,8 @@ public:
 		}
 		return 0;
 	}
+	int getX()const { return x; }
+	int getY()const { return y; }
+	int getSirina()const { return sirina; }
+	int getVisina()const { return visina; }
 };

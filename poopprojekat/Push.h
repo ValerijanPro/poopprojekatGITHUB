@@ -17,4 +17,5 @@ public:
 	void run(stek& s, argumenti arg) {
 		s.push(arg.at(index));
 	}
+	int getValue()const { return index; }
 };

@@ -33,4 +33,5 @@ public:
 		//ss.run(s, arg);
 		s.push(NoviPiksel(r2, g2, b2, 255));
 	}
+	int getValue()const { return broj; }
 };

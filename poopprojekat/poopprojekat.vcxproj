@@ -125,6 +125,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Absolute.h" />
@@ -138,6 +139,7 @@
     <ClInclude Include="dibzaglavlje1.h" />
     <ClInclude Include="Div.h" />
     <ClInclude Include="DivInvert.h" />
+    <ClInclude Include="EksportXMLmeni.h" />
     <ClInclude Include="GreskaPostojiKljuc.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inverzija.h" />
@@ -167,7 +169,9 @@
     <ClInclude Include="Sub.h" />
     <ClInclude Include="SubInvert.h" />
     <ClInclude Include="Timotije.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="UcitavanjeSlikeMeni.h" />
+    <ClInclude Include="XMLwriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
