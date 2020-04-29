@@ -15,7 +15,7 @@
 #include"pamwriter.h"
 #include"MainMeni.h"
 #include"tinyxml2.h"
-void main() {
+void main() { 
 	MainMeni mm = MainMeni();
 	MeniZaSelekcije ms;
 	int Radi = 1;

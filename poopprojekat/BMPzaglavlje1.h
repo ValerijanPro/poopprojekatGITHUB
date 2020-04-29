@@ -24,7 +24,8 @@ public:
 		rezervisano1 = 0;
 		rezervisano2 = 0;
 		// PocetakPiksela = 0x36040000;
-		PocetakPiksela = 0x7A000000;
+		//PocetakPiksela = 0x7A000000;
+		PocetakPiksela = 0x8A000000;
 		PocetakPiksela = zamenibitove32(PocetakPiksela);
 	}
 	void zamenibitove()

@@ -5,6 +5,7 @@
 #include<string>
 #include"pamcitac.h"
 #include"BMPcitac.h"
+//TODO: NA PROIZVOLJNU POZICIJU UPISATI LEJER
 class UcitavanjeSlikeMeni  {
 	std::string ImeSlike;
 	int format; // 1 BMP, 2 PAM, 3 image

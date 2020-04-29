@@ -28,6 +28,7 @@ struct DIBzaglavlje1 {
 	int redgamma;
 	int greengamma;
 	int bluegamma;
+	char unknown[16];
 	/*
 	short karataBoja;
 	short brBitaPoPixelu;
@@ -49,11 +50,14 @@ public:
 		 brBitaPoPixelu = zamenibitove16(brBitaPoPixelu);
 		 BI_BITFIELDS=0x03000000;
 		 BI_BITFIELDS = zamenibitove32(BI_BITFIELDS);
-		 rawbitmapdata=0x20000000;
-		 rawbitmapdata = zamenibitove32(rawbitmapdata);
-		 horizontal=0x130B0000;
+		 rawbitmapdata = velicina;
+		// rawbitmapdata=0x20000000;
+		// rawbitmapdata = zamenibitove32(rawbitmapdata);
+		 //horizontal=0x130B0000;
+		 horizontal = 0;
 		 horizontal = zamenibitove32(horizontal);
-		 vertical= 0x130B0000;
+		 //vertical= 0x130B0000;
+		 vertical = 0;
 		 vertical = zamenibitove32(vertical);
 		 kolorpalete=0;
 		 important=0;
@@ -65,7 +69,8 @@ public:
 		 bluemask = zamenibitove32(bluemask);
 		 alphamask=0x000000FF;
 		 alphamask = zamenibitove32(alphamask);
-		 LCS_WINDOWS=0x206E6957;
+		// LCS_WINDOWS=0x206E6957;
+		 LCS_WINDOWS = 0x42475273;
 		 LCS_WINDOWS = zamenibitove32(LCS_WINDOWS);
 		 for (int i = 0; i < 36;i++)array[i] = 0;
 		 redgamma=0;

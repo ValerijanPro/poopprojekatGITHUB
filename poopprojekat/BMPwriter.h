@@ -1,6 +1,7 @@
 #pragma once
 #include<map>
 #include<iostream>
+#include<chrono>
 #include<fstream>
 #include <vector>
 #include"BMPzaglavlje.h"
@@ -14,7 +15,7 @@
 typedef std::vector<int> aktivni;
 class BMPwriter {
 public:
-	 
+	 //TODO: ODVOJENO OPERACIJE, NE TREBA U ISTOM FAJLU U KOME JE IMAGE
 	void upisi(Image* image,std::string ImeFajla) {
 		std::fstream file(ImeFajla, std::ios::binary | std::ios::out);
 		//if (!file.is_open) {
@@ -40,10 +41,12 @@ public:
 			std::cin >> bb;
 			std::cin >> aa;
 		}
-		
+		auto t1 = std::chrono::high_resolution_clock::now();
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
-		
-		
+		auto t2 = std::chrono::high_resolution_clock::now();
+		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
+
+		std::cout << duration;
 
 		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
 		//Pravougaonik kvadrat2 = Pravougaonik(200, 300, 200 , 200);
@@ -56,10 +59,11 @@ public:
 		//Selekcija se = Selekcija("Nekatamo", pp);
 
 
-		DIBzaglavlje dibzaglavlje = DIBzaglavlje(lejer->getSirina(), lejer->getvisina(), lejer->getSirina()* lejer->getvisina()*4); //sir*vis*bitova/8
+		DIBzaglavlje1 dibzaglavlje = DIBzaglavlje1(lejer->getSirina(), lejer->getvisina(), lejer->getSirina()* lejer->getvisina()*4); //sir*vis*bitova/8
 
-		BMPzaglavlje bmpzaglavlje = BMPzaglavlje(lejer->getSirina() * lejer->getvisina()*4 + 54);
-
+		BMPzaglavlje1 bmpzaglavlje = BMPzaglavlje1(lejer->getSirina() * lejer->getvisina()*4 + 122);
+		std::cout << sizeof(bmpzaglavlje) << std::endl;
+		std::cout << sizeof(dibzaglavlje) << std::endl;
 		file.write((char*)& bmpzaglavlje, sizeof(bmpzaglavlje));
 		file.write((char*)& dibzaglavlje, sizeof(dibzaglavlje));
 		
@@ -150,72 +154,17 @@ public:
 				temp = p1->getR();
 			
 				file.write((char*)& temp, sizeof(temp));
-				paja++;
-				x = i;
-				y = j;
-		
+			
 				temp = p1->getOpacity();
 			//	temp = 0;
 				file.write((char*)& temp, sizeof(temp));
 				
-				//if (!state) {
-				//	short temp = p1->getOffset();
-				//	temp = zamenitempbitove16(temp);
-				//	file.write((char*)& temp, sizeof(temp));
-				//	paja++;
-				//	/*temp = 255;
-				//	file.write((char*)& temp, sizeof(temp));
-				//	state = 1;*/
-				//	state = 1;
-				//}
-				//else {
-				//	
-				//	state = 0;
-				//}
-
-				//if (state) {
-				//	state = 0;
-				//	Piksel p1 = lejer->getPixel(i, j);
-				//	i++;
-				//	Piksel p2 = lejer->getPixel(i, j);
-				//	long long upis = (p1.getB() << 56) | (p1.getG() << 48) | (p1.getR() << 40) | (p2.getB() << 32) | (p2.getG() << 24) | (p2.getR() << 16);
-				//	file.write((char*)& upis, sizeof(upis));
-				//	//binarnifajl.read((char*)& pixel, sizeof(pixel));
-				//	//	file.write((char*)& pixel, sizeof(pixel));
-				//		//std::cout << std::hex << pixel;
-				////	pixel = _byteswap_uint64(pixel);
-
-				//	//std::cout << std::hex << pixel;
-				////	l.overwritepixel(i, j, Piksel(pixel >> 56, (pixel >> 48) & 0xFF, (pixel >> 40) & 0xFF));
-				//	i++;
-				////	l.overwritepixel(i, j, Piksel((pixel >> 32) & 0xFF, (pixel >> 24) & 0xFF, (pixel >> 16) & 0xFF));
-				//}
-				//else {
-				////	binarnifajl.read((char*)& pixel, sizeof(pixel));
-
-				////	pixel = _byteswap_uint64(pixel);
-				////	l.overwritepixel(i, j, Piksel(pixel >> 56, (pixel >> 48) & 0xFF, (pixel >> 40) & 0xFF));
-				//	i = 0;
-				////	l.overwritepixel(i, j, Piksel((pixel >> 32) & 0xFF, (pixel >> 24) & 0xFF, (pixel >> 16) & 0xFF));
-				//	state = 1;
-
-				//}
 
 
 			}
 		
 		}
-	/*	while (paja < 45000) {
-			paja++;
-			char temp;
-			temp = p2.getB();
-			file.write((char*)& temp, sizeof(temp));
-			temp = p2.getG();
-			file.write((char*)& temp, sizeof(temp));
-			temp = p2.getR();
-			file.write((char*)& temp, sizeof(temp));
-		}
-				*/
+	
 		file.close();
 
 

@@ -19,12 +19,12 @@ public:
 	//	if (!citac) {
 	//		return;//greska
 	//	}
-		BMPzaglavlje bmpzaglavlje;
+		BMPzaglavlje1 bmpzaglavlje;
 		binarnifajl.read((char*)&bmpzaglavlje, sizeof(bmpzaglavlje));
 
 		bmpzaglavlje.zamenibitove();
 
-		DIBzaglavlje dibzaglavlje;
+		DIBzaglavlje1 dibzaglavlje;
 		binarnifajl.read((char*)& dibzaglavlje, sizeof(dibzaglavlje));
 
 
@@ -32,7 +32,7 @@ public:
 		bool state = 1;
 
 		bmpzaglavlje.zamenibitove();
-
+		binarnifajl.seekg(bmpzaglavlje.PocetakPiksela,0);
 		//Layer* l = new Layer(dibzaglavlje.sirinaSlike, dibzaglavlje.visinaSlike);
 		std::shared_ptr<Layer> l = std::make_shared<Layer>(dibzaglavlje.sirinaSlike, dibzaglavlje.visinaSlike);
 		if (dibzaglavlje.brBitaPoPixelu == 32) {

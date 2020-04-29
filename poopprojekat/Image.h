@@ -194,8 +194,55 @@ public:
 	}
 	std::shared_ptr<Layer> konstruisiFinalniLayer(aktivni a) {
 		//return layers[0];// TODO: PRVO OVO OD ZIZE, a posle toga AKTIVNE LEJERE, a posle toga UVEK PUSH PAJA
-
 		std::shared_ptr<Layer> lejer = std::make_shared<Layer>(sirina, visina);
+		std::vector<std::shared_ptr<Layer>> aktivniLejeri;
+
+		if (a.size() == 0) return lejer;
+		for (const auto& i : layers) {
+			if (inAktivni(i.first, a)) {
+				aktivniLejeri.push_back(i.second);
+			}
+		}
+
+		for (int i = 0; i < sirina; i++) {
+			for (int j = 0; j < visina; j++) {
+				Piksel piksel = aktivniLejeri[0]->getPixel(i, j);
+				double r = piksel.getR() * 1.0 / 255;
+				double g = piksel.getG() * 1.0 / 255;
+				double b = piksel.getB() * 1.0 / 255;
+				double opacity = piksel.getOpacity() * 1.0 / 255;
+
+				
+					for (int k = 1; k != aktivniLejeri.size(); k++) {
+						if (opacity == 1.0) { break; }
+						Piksel p1 = aktivniLejeri[k]->getPixel(i,j);
+						double r1 = p1.getR() * 1.0 / 255;
+						double g1 = p1.getG() * 1.0 / 255;
+						double b1 = p1.getB() * 1.0 / 255;
+						double opacity1= p1.getOpacity() * 1.0 / 255;
+
+						double temp = (1 - opacity)* opacity1 ;
+						double opt = opacity + temp;
+						double temp2 = temp / opt;
+						double temp3 = opacity / opt;
+						double rt = r * temp3 + r1 * temp2;
+						double gt = g * temp3 + g1 * temp2;
+						double bt = b * temp3 + b1 * temp2;
+						
+						r = rt;
+						b = bt;
+						g = gt;
+						opacity = opt;
+
+					}
+				
+				Piksel novi = Piksel(r*255, g*255, b*255, 0, opacity*255);
+				lejer->overwritepixel(i, j, novi);
+			}
+		}
+
+		return lejer;
+	
 
 
 		for (int j = visina - 1; j > 0; j--) {
