@@ -27,7 +27,22 @@ public:
 			if (xx == -1) break;
 			ak.push_back(xx);
 		}
+		bool bojenje;
+		int rr, gg, bb, aa;
+		std::cout << "Da li zelite da obojite aktivne selekcije?" << std::endl;
+		std::cout << "1. Da" << std::endl;
+		std::cout << "0. Ne" << std::endl;
+		std::cin >> bojenje;
+		if (bojenje) {
+			std::cout << "Unesite redom R,G,B,A (0-255)" << std::endl;
+			std::cin >> rr;
+			std::cin >> gg;
+			std::cin >> bb;
+			std::cin >> aa;
+		}
+		
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
+		
 		
 
 		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
@@ -55,6 +70,17 @@ public:
 		int x=0, y=0;
 		int paja = 0;
 		
+		std::vector<Selekcija> aktivne;
+		for (auto q : image->getSelekcije()) {
+
+			if (q.getStanje() ) {
+				
+				aktivne.push_back(q);
+
+			}
+		}
+
+
 		for (int j = dibzaglavlje.visinaSlike - 1; j >= 0; j--) { // obrnuto
 			
 			for (int i=0; i < dibzaglavlje.sirinaSlike; i++) {
@@ -67,35 +93,50 @@ public:
 
 				stek s;
 
-				
+				//selekcije aktivne
 
-				if (image->getSelekcije().size() != 0) {
-					for (auto q : image->getSelekcije()) {
+				if (!bojenje) {
+					if (aktivne.size()!=0) {
+						for (auto q : aktivne) {
 
-						if (q.getStanje() && q.USelekciji(i, j)) {
-							for (auto q : image->getOperacije()) {
-								q->run(s, ar);
+							if ( q.USelekciji(i, j)) {
+								for (auto q : image->getOperacije()) {
+									q->run(s, ar);
+								}
+								NoviPiksel p4 = s.top();
+
+								p1 = &p4.getPiksel();
+								s.pop();
+								ar.pop_back();
+								break;
 							}
-							NoviPiksel p4 = s.top();
-
-							p1 = &p4.getPiksel();
-							s.pop();
-							ar.pop_back();
-							break;
 						}
 					}
-				}
-				else { //TODO: uvek mora da ima push
-					for (auto q : image->getOperacije()) {
-						q->run(s, ar);
-					}
-					NoviPiksel p4 = s.top();
+					else { //TODO: uvek mora da ima push
+						for (auto q : image->getOperacije()) {
+							q->run(s, ar);
+						}
+						NoviPiksel p4 = s.top();
 
-					p1 = &p4.getPiksel();
-					s.pop();
-					ar.pop_back();
+						p1 = &p4.getPiksel();
+						s.pop();
+						ar.pop_back();
+					}
+
 				}
-			
+				else {
+					if (aktivne.size()!=0) {
+						for (auto q : aktivne) {
+
+							if ( q.USelekciji(i, j)) {
+								p1 = new Piksel(rr, gg, bb, 0, aa);
+							}
+						}
+					}
+					else { //TODO: uvek mora da ima push
+						p1 = new Piksel(rr, gg, bb, 0, aa);
+					}
+				}
 				
 				
 				char temp;
@@ -114,7 +155,7 @@ public:
 				y = j;
 		
 				temp = p1->getOpacity();
-				
+			//	temp = 0;
 				file.write((char*)& temp, sizeof(temp));
 				
 				//if (!state) {

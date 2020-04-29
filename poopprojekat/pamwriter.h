@@ -26,6 +26,32 @@ public:
 			if (xx == -1) break;
 			ak.push_back(xx);
 		}
+
+		bool bojenje;
+		int rr, gg, bb, aa;
+		std::cout << "Da li zelite da obojite aktivne selekcije?" << std::endl;
+		std::cout << "1. Da" << std::endl;
+		std::cout << "0. Ne" << std::endl;
+		std::cin >> bojenje;
+		if (bojenje) {
+			std::cout << "Unesite redom R,G,B,A (0-255)" << std::endl;
+			std::cin >> rr;
+			std::cin >> gg;
+			std::cin >> bb;
+			std::cin >> aa;
+		}
+
+
+		std::vector<Selekcija> aktivne;
+		for (auto q : image->getSelekcije()) {
+
+			if (q.getStanje()) {
+
+				aktivne.push_back(q);
+
+			}
+		}
+
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
 		//DIBzaglavlje1 dibzaglavlje = DIBzaglavlje1(lejer->getSirina(), lejer->getvisina(), lejer->getSirina() * lejer->getvisina());
 		PamHeder pamheder = PamHeder(lejer->getSirina(), lejer->getvisina());
@@ -76,31 +102,47 @@ public:
 
 
 
-				if (image->getSelekcije().size() != 0) {
-					for (auto q : image->getSelekcije()) {
+				if (!bojenje) {
+					if (aktivne.size() != 0) {
+						for (auto q : aktivne) {
 
-						if (q.getStanje() && q.USelekciji(i, j)) {
-							for (auto q : image->getOperacije()) {
-								q->run(s, ar);
+							if (q.USelekciji(i, j)) {
+								for (auto q : image->getOperacije()) {
+									q->run(s, ar);
+								}
+								NoviPiksel p4 = s.top();
+
+								p1 = &p4.getPiksel();
+								s.pop();
+								ar.pop_back();
+								break;
 							}
-							NoviPiksel p4 = s.top();
-
-							p1 = &p4.getPiksel();
-							s.pop();
-							ar.pop_back();
-							break;
 						}
 					}
+					else { //TODO: uvek mora da ima push
+						for (auto q : image->getOperacije()) {
+							q->run(s, ar);
+						}
+						NoviPiksel p4 = s.top();
+
+						p1 = &p4.getPiksel();
+						s.pop();
+						ar.pop_back();
+					}
+
 				}
 				else {
-					for (auto q : image->getOperacije()) {
-						q->run(s, ar);
-					}
-					NoviPiksel p4 = s.top();
+					if (aktivne.size() != 0) {
+						for (auto q : aktivne) {
 
-					p1 = &p4.getPiksel();
-					s.pop();
-					ar.pop_back();
+							if (q.USelekciji(i, j)) {
+								p1 = new Piksel(rr, gg, bb, 0, aa);
+							}
+						}
+					}
+					else { //TODO: uvek mora da ima push
+						p1 = new Piksel(rr, gg, bb, 0, aa);
+					}
 				}
 				//if (se.USelekciji(i, j)) {
 				//	//std::cout << "i:" << i << ", j:" << j << std::endl;
