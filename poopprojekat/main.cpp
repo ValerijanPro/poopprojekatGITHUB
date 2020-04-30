@@ -15,11 +15,33 @@
 #include"pamwriter.h"
 #include"MainMeni.h"
 #include"tinyxml2.h"
-void main() { 
+#include"CMDinput.h"
+void main(int argc, char* argv[]) {
+	Image* slika = new Image();
+	if (argc != 1) {
+		std::string imefajlaSlike, imefajlaOperacija;
+		imefajlaSlike = argv[1];
+		imefajlaOperacija = argv[2];
+		CMDinput cmd;
+		slika=cmd.ucitaj(imefajlaSlike, imefajlaOperacija);
+		if (SeZavrsavaSa(imefajlaSlike, ".bmp")) {
+			BMPwriter BMP;
+			BMP.upisi(slika, imefajlaSlike);
+		}
+		else if (SeZavrsavaSa(imefajlaSlike, ".pam")) {
+			PAMwriter PAM;
+			PAM.upisi(slika, imefajlaSlike);
+		}
+		else if (SeZavrsavaSa(imefajlaSlike, ".xml")) {
+			XMLIMAGEwriter xml;
+			xml.ispisiXML(imefajlaSlike, slika);
+		}
+		return;
+	}
 	MainMeni mm = MainMeni();
 	MeniZaSelekcije ms;
 	int Radi = 1;
-	Image* slika=new Image();
+	
 	while (1) {
 		mm.IspisiMainMeni();
 		int opcija = mm.UcitajOpciju();
