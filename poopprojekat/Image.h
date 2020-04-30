@@ -39,18 +39,78 @@ public:
 	// prosiriti sirinu i visinu u svim lejerima
 	// tj ako dodas lejer koji je veci od ostalih, svi ostali moraju da porastu
 	void ObrisiLejer(int pozicija) {
-		if (layers[pozicija] == nullptr) return; // THROW GRESKA U INDEKSIRANJU
-		std::shared_ptr<Layer> temp = layers[pozicija];
-		for (int i = pozicija; i != brlejera - 1; i++) {
-			layers[i] = layers[i + 1]; 
-		}
-		layers[brlejera - 1] = temp;
-		layers[brlejera-1]->~Layer();
-		brlejera--;
+		if (layers.count(pozicija) == 0)
+			return;
+		layers.erase(pozicija);
+
+		/*return;*/
+		//if (layers[pozicija] == nullptr) return; // THROW GRESKA U INDEKSIRANJU
+		//std::shared_ptr<Layer> temp = layers[pozicija];
+		//for (int i = pozicija; i != brlejera - 1; i++) {
+		//	layers[i] = layers[i + 1]; 
+		//}
+		//layers[brlejera - 1] = temp;
+		//layers[brlejera-1]->~Layer();
+		//brlejera--;
 	}
 	op& getOperacije() { return operacije; }
 	void dodajPush() {
 		operacije.push_back(std::make_shared<Push>(0));
+	}
+	void DodajOperaciju(int input, int value) {
+		if (input == 1) {
+			operacije.push_back(std::make_shared<Absolute>(value));
+			
+		}
+		else if (input == 2) {
+			
+			operacije.push_back(std::make_shared<Add>(value));
+		}
+		else if (input == 3) {
+			//	i->getOperacije().push_back(&Crnobela());
+			operacije.push_back(std::make_shared<Crnobela>());
+		}
+		else if (input == 4) {
+			
+			operacije.push_back(std::make_shared<Div>(value));
+		}
+		else if (input == 5) {
+			
+			operacije.push_back(std::make_shared<DivInvert>(value)); 
+		}
+		else if (input == 6) {
+			operacije.push_back(std::make_shared<Inverzija>()); 
+		}
+		else if (input == 7) {
+			operacije.push_back(std::make_shared<Log>(0)); 
+		}
+		else if (input == 8) {
+			
+			operacije.push_back(std::make_shared<Max>(value)); 
+		}
+		else if (input == 9) {
+			
+			operacije.push_back(std::make_shared<Min>(value));
+		}
+		else if (input == 10) {
+			
+			operacije.push_back(std::make_shared<Mul>(value)); 
+		}
+		else if (input == 11) {
+	
+			operacije.push_back(std::make_shared<Pow>(value));
+		}
+		else if (input == 12) {
+			operacije.push_back(std::make_shared<Siva>());
+		}
+		else if (input == 13) {
+			
+			operacije.push_back(std::make_shared<Sub>(value));
+		}
+		else if (input == 14) {
+			
+			operacije.push_back(std::make_shared<SubInvert>(value)); 
+		}
 	}
 	int DodajOperaciju(int input) {
 		std::shared_ptr<ioperation> p1 = std::make_shared<Absolute>(0);
@@ -129,7 +189,7 @@ public:
 		else return 0;
 
 	}
-
+	
 	void dodajSelekciju(std::string s, pravougaonici pp, bool stanje) {
 		Selekcija* nova = new Selekcija(s, pp);
 		nova->setStanje(stanje);
@@ -215,12 +275,13 @@ public:
 				
 					for (int k = 1; k != aktivniLejeri.size(); k++) {
 						if (opacity == 1.0) { break; }
+						
 						Piksel p1 = aktivniLejeri[k]->getPixel(i,j);
 						double r1 = p1.getR() * 1.0 / 255;
 						double g1 = p1.getG() * 1.0 / 255;
 						double b1 = p1.getB() * 1.0 / 255;
 						double opacity1= p1.getOpacity() * 1.0 / 255;
-
+						if (opacity1 == 0)continue;
 						double temp = (1 - opacity)* opacity1 ;
 						double opt = opacity + temp;
 						double temp2 = temp / opt;
@@ -243,7 +304,7 @@ public:
 
 		return lejer;
 	
- 
+
 
 		for (int j = visina - 1; j > 0; j--) {
 			int i = 0;

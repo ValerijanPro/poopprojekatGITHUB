@@ -8,6 +8,16 @@
 #include<fstream>
 #include <vector>
 typedef std::vector<int> aktivni;
+bool SeZavrsavaSa(std::string const& fullString, std::string const& ending) {
+	if (fullString.length() >= ending.length()) {
+		return (0 == fullString.compare(fullString.length() - ending.length(), ending.length(), ending));
+	}
+	else {
+		return false;
+	}
+}
+
+
 bool inAktivni(int x,aktivni a){
 	for (auto i:a) {
 		if (i == x) return 1;
