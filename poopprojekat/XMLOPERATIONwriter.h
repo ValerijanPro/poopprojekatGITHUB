@@ -23,7 +23,7 @@ public:
 	
 		for (auto operacija : image->getOperacije()) {
 			printer.OpenElement("Operacija");
-			printer.PushAttribute("Ime operacije:", typeid(*operacija).name());
+			printer.PushAttribute("ImeOperacije:", typeid(*operacija).name());
 			printer.PushAttribute("Value:", operacija->getValue());
 			printer.CloseElement();
 		}

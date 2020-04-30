@@ -53,6 +53,8 @@ public:
 					printer.PushAttribute("B", lejer.second->getPixel(w, h).getB());
 					printer.PushAttribute("Opacity", lejer.second->getPixel(w, h).getOpacity());
 					printer.PushAttribute("Offset", lejer.second->getPixel(w, h).getOffset());
+					printer.PushAttribute("I", h);
+					printer.PushAttribute("J", w);
 					printer.CloseElement();
 				}
 			}
@@ -74,18 +76,18 @@ public:
 			}
 			printer.CloseElement();
 		}
-		for (auto active : image->getAkt()) {
+		/*for (auto active : image->getAkt()) {
 			printer.OpenElement("StanjeLejera");
 			
 			printer.PushAttribute("aktivna", active);
 			printer.CloseElement();
-		}
-		for (auto operacija : image->getOperacije()) {
+		}*/
+		/*for (auto operacija : image->getOperacije()) {
 			printer.OpenElement("Operacija");
 			printer.PushAttribute("Ime operacije:", typeid(*operacija).name());
 			printer.PushAttribute("Value:", operacija->getValue());
 			printer.CloseElement();
-		}
+		}*/
 	
 
 
