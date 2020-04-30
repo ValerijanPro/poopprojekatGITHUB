@@ -243,7 +243,7 @@ public:
 
 		return lejer;
 	
-
+ 
 
 		for (int j = visina - 1; j > 0; j--) {
 			int i = 0;
