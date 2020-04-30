@@ -16,7 +16,7 @@ class Piksel {
 	char opacity;
 	short offset;
 public:
-	Piksel(char rr = 0, char gg = 0, char bb = 0, short off =0, char op = 255) :r(rr), g(gg), b(bb), opacity(op),offset(off) {}
+	Piksel(char rr = 0, char gg = 0, char bb = 0, short off =0, char op = 0) :r(rr), g(gg), b(bb), opacity(op),offset(off) {}
 
 	uint8_t getR()const { return r; }
 	uint8_t getG()const { return g; }

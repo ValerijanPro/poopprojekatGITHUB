@@ -134,6 +134,7 @@
     <ClInclude Include="BMPwriter.h" />
     <ClInclude Include="BMPzaglavlje.h" />
     <ClInclude Include="BMPzaglavlje1.h" />
+    <ClInclude Include="CMDinput.h" />
     <ClInclude Include="Crnobela.h" />
     <ClInclude Include="DIBzaglavlje.h" />
     <ClInclude Include="dibzaglavlje1.h" />
@@ -171,7 +172,9 @@
     <ClInclude Include="Timotije.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="UcitavanjeSlikeMeni.h" />
+    <ClInclude Include="XMLIMAGEreader.h" />
     <ClInclude Include="XMLIMAGEwriter.h" />
+    <ClInclude Include="XMLOPERATIONreader.h" />
     <ClInclude Include="XMLOPERATIONwriter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

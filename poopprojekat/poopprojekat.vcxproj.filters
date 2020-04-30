@@ -179,5 +179,14 @@
     <ClInclude Include="XMLOPERATIONwriter.h">
       <Filter>Header Files\XML</Filter>
     </ClInclude>
+    <ClInclude Include="XMLIMAGEreader.h">
+      <Filter>Header Files\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="CMDinput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLOPERATIONreader.h">
+      <Filter>Header Files\XML</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
