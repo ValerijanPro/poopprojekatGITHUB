@@ -18,12 +18,18 @@
 #include"CMDinput.h"
 void main(int argc, char* argv[]) {
 	Image* slika = new Image();
-	//if (argc != 1) {
+	//std::cout << argc << std::endl;
+	if (argc != 1) {
+		
+		//std::cout << argv[0]<<std::endl;
 		std::string imefajlaSlike, imefajlaOperacija;
-	//	imefajlaSlike = argv[1];
-	//	imefajlaOperacija = argv[2];
-		imefajlaSlike = "RAY - Copy.BMP";
-		imefajlaOperacija = "svekrva.fun";
+		imefajlaSlike = argv[1];
+		//std::cout << argv[1]<<std::endl;
+		imefajlaOperacija = argv[2];
+	//	std::cout << argv[2]<<std::endl;
+		//imefajlaSlike = "IMG_20190809_154608083 - Copy.pam";
+		//imefajlaSlike = "C:\\Users\\Valja\\source\\repos\\poopprojekat\\poopprojekatGITHUB\\poopprojekat\\RAY - Copy.BMP";
+		//imefajlaOperacija = "svekrva.fun";
 		
 		CMDinput cmd;
 		slika->getOperacije().clear();
@@ -35,9 +41,10 @@ void main(int argc, char* argv[]) {
 			BMP.ucitajAtributeCMD(asd);
 			BMP.upisi(slika, imefajlaSlike);
 		}
-		else if (SeZavrsavaSa(imefajlaSlike, ".PAM") ){
+		else if (SeZavrsavaSa(imefajlaSlike, ".pam") ){
 			PAMwriter PAM;
 			aktivni asd; asd.push_back(0);
+		//	std::cout << "PAM";
 			PAM.ucitajAtributeCMD(asd);
 			PAM.upisi(slika, imefajlaSlike);
 		}
@@ -45,8 +52,9 @@ void main(int argc, char* argv[]) {
 			XMLIMAGEwriter xml;
 			xml.ispisiXML(imefajlaSlike, slika);
 		}
+		std::cout << "Kraj kraja" << std::endl;
 		return;
-//	}
+	}
 	MainMeni mm = MainMeni();
 	MeniZaSelekcije ms;
 	int Radi = 1;

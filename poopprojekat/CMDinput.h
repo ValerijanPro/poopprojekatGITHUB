@@ -26,7 +26,7 @@ public:
 			XMLOPERATIONwriter op1;
 			op1.ispisiXML("BOLE", slika);
 		}
-		else if (SeZavrsavaSa(ImeSlike, ".PAM")) {
+		else if (SeZavrsavaSa(ImeSlike, ".pam")) {
 		
 			PamCitac p = PamCitac();
 			std::shared_ptr<Layer> p1 = p.ucitaj(ImeSlike);

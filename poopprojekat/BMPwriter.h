@@ -30,7 +30,7 @@ public:
 		auto t2 = std::chrono::high_resolution_clock::now();
 		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
 
-		std::cout << duration;
+	//	std::cout << duration;
 
 		//Pravougaonik kvadrat1 = Pravougaonik(400,400, 50, 50);
 		//Pravougaonik kvadrat2 = Pravougaonik(200, 300, 200 , 200);
