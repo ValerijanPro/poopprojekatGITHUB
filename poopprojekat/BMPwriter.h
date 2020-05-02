@@ -14,6 +14,9 @@
 #include"BMPzaglavlje1.h"
 typedef std::vector<int> aktivni;
 class BMPwriter {
+	aktivni ak;
+	bool bojenje;
+	int rr = 0, gg = 0, bb = 0, aa = 0;
 public:
 	 //TODO: ODVOJENO OPERACIJE, NE TREBA U ISTOM FAJLU U KOME JE IMAGE
 	void upisi(Image* image,std::string ImeFajla) {
@@ -21,26 +24,7 @@ public:
 		//if (!file.is_open) {
 			//gresku napraviti
 		//}
-		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite -1 za kraj)" << std::endl;
-		int xx = 10; aktivni ak; ak.clear();
-		while (1) {
-			std::cin >> xx;
-			if (xx == -1) break;
-			ak.push_back(xx);
-		}
-		bool bojenje;
-		int rr, gg, bb, aa;
-		std::cout << "Da li zelite da obojite aktivne selekcije?" << std::endl;
-		std::cout << "1. Da" << std::endl;
-		std::cout << "0. Ne" << std::endl;
-		std::cin >> bojenje;
-		if (bojenje) {
-			std::cout << "Unesite redom R,G,B,A (0-255)" << std::endl;
-			std::cin >> rr;
-			std::cin >> gg;
-			std::cin >> bb;
-			std::cin >> aa;
-		}
+		
 		auto t1 = std::chrono::high_resolution_clock::now();
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
 		auto t2 = std::chrono::high_resolution_clock::now();
@@ -62,8 +46,8 @@ public:
 		DIBzaglavlje1 dibzaglavlje = DIBzaglavlje1(lejer->getSirina(), lejer->getvisina(), lejer->getSirina()* lejer->getvisina()*4); //sir*vis*bitova/8
 
 		BMPzaglavlje1 bmpzaglavlje = BMPzaglavlje1(lejer->getSirina() * lejer->getvisina()*4 + 122);
-		std::cout << sizeof(bmpzaglavlje) << std::endl;
-		std::cout << sizeof(dibzaglavlje) << std::endl;
+		//std::cout << sizeof(bmpzaglavlje) << std::endl;
+		//std::cout << sizeof(dibzaglavlje) << std::endl;
 		file.write((char*)& bmpzaglavlje, sizeof(bmpzaglavlje));
 		file.write((char*)& dibzaglavlje, sizeof(dibzaglavlje));
 		
@@ -167,6 +151,32 @@ public:
 	
 		file.close();
 
+
+	}
+	void ucitajAtributeMeni() {
+		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite -1 za kraj)" << std::endl;
+		int xx = 10;
+		while (1) {
+			std::cin >> xx;
+			if (xx == -1) break;
+			ak.push_back(xx);
+		}
+		
+		std::cout << "Da li zelite da obojite aktivne selekcije?" << std::endl;
+		std::cout << "1. Da" << std::endl;
+		std::cout << "0. Ne" << std::endl;
+		std::cin >> bojenje;
+		if (bojenje) {
+			std::cout << "Unesite redom R,G,B,A (0-255)" << std::endl;
+			std::cin >> rr;
+			std::cin >> gg;
+			std::cin >> bb;
+			std::cin >> aa;
+		}
+	}
+	void ucitajAtributeCMD(aktivni a) {
+		ak = a;
+	
 
 	}
 };

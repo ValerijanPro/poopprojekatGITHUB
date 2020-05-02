@@ -25,11 +25,13 @@ public:
 		if (format == 1) {
 			imeFajla += ".bmp";
 			b = BMPwriter();
+			b.ucitajAtributeMeni();
 			b.upisi(i,imeFajla);
 		}
 		else if (format == 2) {
 			imeFajla += ".pam";
 			p = PAMwriter();
+			p.ucitajAtributeMeni();
 			p.upisi(i,imeFajla);
 		}
 		

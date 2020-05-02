@@ -12,7 +12,8 @@ class CMDinput {
 public:
 	Image* ucitaj(std::string ImeSlike, std::string ImeOperacija) {
 		Image* slika = new Image();
-		if (SeZavrsavaSa(ImeSlike, ".bmp")) {
+		slika->getOperacije().clear();
+		if (SeZavrsavaSa(ImeSlike, ".BMP")) {
 		
 			BMPcitac b = BMPcitac();
 
@@ -22,9 +23,10 @@ public:
 			slika->DodajSloj(p1, slika->getBrlejera());
 			XMLOPERATIONreader op;
 			op.ucitajXML(ImeOperacija, slika);
-
+			XMLOPERATIONwriter op1;
+			op1.ispisiXML("BOLE", slika);
 		}
-		else if (SeZavrsavaSa(ImeSlike, ".pam")) {
+		else if (SeZavrsavaSa(ImeSlike, ".PAM")) {
 		
 			PamCitac p = PamCitac();
 			std::shared_ptr<Layer> p1 = p.ucitaj(ImeSlike);

@@ -13,6 +13,8 @@
 #include"korisno.h"
 #include"pamheder.h"
 class PAMwriter {
+	aktivni ak; 
+	bool bojenje; int rr = 0; int gg = 0; int bb = 0; int aa = 0;
 public:
 	void upisi(Image* image,std::string imeFajla) {
 		//std::ofstream file;
@@ -174,5 +176,31 @@ public:
 		//	};
 		}
 		file.close();
+	}
+	void ucitajAtributeMeni() {
+		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite -1 za kraj)" << std::endl;
+		int xx = 10;
+		while (1) {
+			std::cin >> xx;
+			if (xx == -1) break;
+			ak.push_back(xx);
+		}
+
+		std::cout << "Da li zelite da obojite aktivne selekcije?" << std::endl;
+		std::cout << "1. Da" << std::endl;
+		std::cout << "0. Ne" << std::endl;
+		std::cin >> bojenje;
+		if (bojenje) {
+			std::cout << "Unesite redom R,G,B,A (0-255)" << std::endl;
+			std::cin >> rr;
+			std::cin >> gg;
+			std::cin >> bb;
+			std::cin >> aa;
+		}
+	}
+	void ucitajAtributeCMD(aktivni a) {
+		ak = a;
+
+
 	}
 };

@@ -18,18 +18,27 @@
 #include"CMDinput.h"
 void main(int argc, char* argv[]) {
 	Image* slika = new Image();
-	if (argc != 1) {
+	//if (argc != 1) {
 		std::string imefajlaSlike, imefajlaOperacija;
-		imefajlaSlike = argv[1];
-		imefajlaOperacija = argv[2];
+	//	imefajlaSlike = argv[1];
+	//	imefajlaOperacija = argv[2];
+		imefajlaSlike = "RAY - Copy.BMP";
+		imefajlaOperacija = "svekrva.fun";
+		
 		CMDinput cmd;
+		slika->getOperacije().clear();
 		slika=cmd.ucitaj(imefajlaSlike, imefajlaOperacija);
-		if (SeZavrsavaSa(imefajlaSlike, ".bmp")) {
+		
+		if (SeZavrsavaSa(imefajlaSlike, ".BMP")) {
 			BMPwriter BMP;
+			aktivni asd; asd.push_back(0);
+			BMP.ucitajAtributeCMD(asd);
 			BMP.upisi(slika, imefajlaSlike);
 		}
-		else if (SeZavrsavaSa(imefajlaSlike, ".pam")) {
+		else if (SeZavrsavaSa(imefajlaSlike, ".PAM") ){
 			PAMwriter PAM;
+			aktivni asd; asd.push_back(0);
+			PAM.ucitajAtributeCMD(asd);
 			PAM.upisi(slika, imefajlaSlike);
 		}
 		else if (SeZavrsavaSa(imefajlaSlike, ".xml")) {
@@ -37,7 +46,7 @@ void main(int argc, char* argv[]) {
 			xml.ispisiXML(imefajlaSlike, slika);
 		}
 		return;
-	}
+//	}
 	MainMeni mm = MainMeni();
 	MeniZaSelekcije ms;
 	int Radi = 1;

@@ -17,7 +17,7 @@ public:
 		doc.LoadFile(str.c_str());
 		auto xmlOperation = doc.FirstChildElement("Operacija");
 		while (xmlOperation != nullptr) {
-			std::string ImeOperacije = xmlOperation->FindAttribute("ImeOperacije")->Name();
+			std::string ImeOperacije = xmlOperation->FindAttribute("ImeOperacije")->Value();
 			int Vrednost = xmlOperation->FindAttribute("Value")->IntValue();
 			if (ImeOperacije=="class Push") {
 				image->dodajPush();
