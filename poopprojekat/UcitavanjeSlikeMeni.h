@@ -35,6 +35,13 @@ public:
 			b = BMPcitac();
 			
 			std::shared_ptr<Layer> p1=b.ucitaj(ImeSlike);
+			if (p1->getSirina() == 0 && p1->getvisina() == 0) {
+				std::cout << "Unesite sirinu i visinu ovog praznog lejera: " << std::endl;
+				int s, v;
+				std::cin >> s;
+				std::cin >> v;
+				p1 =std::make_shared<Layer> (Layer(s, v));
+			}
 			//Layer* lejer = i->konstruisiFinalniLayer();
 			std::cout << "Unesite poziciju na koju biste da upisete lejer: " << std::endl;
 			int poz;
@@ -47,6 +54,13 @@ public:
 			ImeSlike += ".pam";
 			p = PamCitac();
 			std::shared_ptr<Layer> p1 = p.ucitaj(ImeSlike);
+			if (p1->getSirina() == 0 && p1->getvisina() == 0) {
+				std::cout << "Unesite sirinu i visinu ovog praznog lejera: " << std::endl;
+				int s, v;
+				std::cin >> s;
+				std::cin >> v;
+				p1 = std::make_shared<Layer>(Layer(s, v));
+			}
 			std::cout << "Unesite poziciju na koju biste da upisete lejer: " << std::endl;
 			int poz;
 			std::cin >> poz;
@@ -57,11 +71,18 @@ public:
 			ImeSlike += ".xml";
 			XMLIMAGEreader xml ;
 		//	std::shared_ptr<Layer> p1=xml.ucitajXML(ImeSlike,i);
-			std::cout << "Unesite poziciju na koju biste da upisete lejer: " << std::endl;
+			/*std::cout << "Unesite poziciju na koju biste da upisete lejer: " << std::endl;
 			int poz;
-			std::cin >> poz;
+			std::cin >> poz;*/
 			//i->DodajSloj(p1, poz);
-			xml.ucitajXML(ImeSlike, i,poz);
+			xml.ucitajXML(ImeSlike, i);
+			if (i->getSirina()==0 && i->getvisina() ==0){
+				std::cout << "Unesite sirinu i visinu ovog praznog lejera: " << std::endl;
+				int s, v;
+				std::cin >> s;
+				std::cin >> v;
+				i = new Image(s, v);
+			}
 			//i->DodajSloj(p1, i->getBrlejera());
 		}
 		return i;

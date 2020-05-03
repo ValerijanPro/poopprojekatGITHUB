@@ -209,7 +209,7 @@ public:
 
 		Image *i = new Image(l->getSirina(),l->getvisina(),brbajtova*8);
 		i->DodajSloj(l, 0);
-		i->setBrBitaPoPixelu(brbajtova * 8);
+		//i->setBrBitaPoPixelu(brbajtova * 8);
 		//return i;
 		return l;
 		/*PAMwriter pw;

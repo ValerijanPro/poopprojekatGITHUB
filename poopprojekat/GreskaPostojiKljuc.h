@@ -5,6 +5,8 @@ class GreskaPostojiKljuc :public  std::exception{
 public:GreskaPostojiKljuc(std::string raz) :r(raz) {}
 	   GreskaPostojiKljuc() = default;
 	   const char* what()const override
-	   {		   return r.c_str();	   }
+	   {
+		   return r.c_str();
+	   }
 
 };

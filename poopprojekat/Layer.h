@@ -16,6 +16,7 @@ private:
 	
 	int sirina, visina;
 public:
+	
 	int getSirina()const { return sirina; }
 	int getvisina()const { return visina; }
 	Layer( int sir, int vis){

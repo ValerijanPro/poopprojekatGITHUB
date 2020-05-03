@@ -24,10 +24,12 @@ void main(int argc, char* argv[]) {
 		//std::cout << argv[0]<<std::endl;
 		std::string imefajlaSlike, imefajlaOperacija;
 		imefajlaSlike = argv[1];
+
 		//std::cout << argv[1]<<std::endl;
 		imefajlaOperacija = argv[2];
+	//	imefajlaOperacija = "svekrva.fun";
 	//	std::cout << argv[2]<<std::endl;
-		//imefajlaSlike = "IMG_20190809_154608083 - Copy.pam";
+		//imefajlaSlike = "RAY - Copy.bmp";
 		//imefajlaSlike = "C:\\Users\\Valja\\source\\repos\\poopprojekat\\poopprojekatGITHUB\\poopprojekat\\RAY - Copy.BMP";
 		//imefajlaOperacija = "svekrva.fun";
 		
@@ -35,24 +37,28 @@ void main(int argc, char* argv[]) {
 		slika->getOperacije().clear();
 		slika=cmd.ucitaj(imefajlaSlike, imefajlaOperacija);
 		
-		if (SeZavrsavaSa(imefajlaSlike, ".BMP")) {
+		if (SeZavrsavaSa(imefajlaSlike, ".BMP") || SeZavrsavaSa(imefajlaSlike, ".bmp")) {
 			BMPwriter BMP;
-			aktivni asd; asd.push_back(0);
-			BMP.ucitajAtributeCMD(asd);
+		//	aktivni asd; asd.push_back(0);
+			if (slika->getAkt().size() == 0) slika->getAkt().push_back(0);
+			BMP.ucitajAtributeCMD(slika->getAkt());
 			BMP.upisi(slika, imefajlaSlike);
 		}
-		else if (SeZavrsavaSa(imefajlaSlike, ".pam") ){
+		else if (SeZavrsavaSa(imefajlaSlike, ".pam")|| SeZavrsavaSa(imefajlaSlike, ".PAM")){
 			PAMwriter PAM;
-			aktivni asd; asd.push_back(0);
+		//	aktivni asd; asd.push_back(0);
 		//	std::cout << "PAM";
-			PAM.ucitajAtributeCMD(asd);
+			if (slika->getAkt().size() == 0) slika->getAkt().push_back(0);
+			PAM.ucitajAtributeCMD(slika->getAkt());
 			PAM.upisi(slika, imefajlaSlike);
 		}
-		else if (SeZavrsavaSa(imefajlaSlike, ".xml")) {
+		else if (SeZavrsavaSa(imefajlaSlike, ".xml")|| SeZavrsavaSa(imefajlaSlike, ".XML")) {
 			XMLIMAGEwriter xml;
+			if (slika->getAkt().size() == 0) slika->getAkt().push_back(0);
+			xml.ucitajAtribute(slika->getAkt());
 			xml.ispisiXML(imefajlaSlike, slika);
 		}
-		std::cout << "Kraj kraja" << std::endl;
+		//std::cout << "Kraj kraja" << std::endl;
 		return;
 	}
 	MainMeni mm = MainMeni();
@@ -109,9 +115,16 @@ void main(int argc, char* argv[]) {
 			continue;
 			
 		}
+		else if(opcija==0) {
+			std::cout << "Da li ste sigurni da zelite da napustite program? " << std::endl;
+			bool da;
+			std::cin >> da;
+			if (da)break;
+			else continue;
+			
+		}
 		else {
 			
-			break;
 		}
 
 			

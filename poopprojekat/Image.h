@@ -23,7 +23,7 @@ class Image {
 	op operacije;
 	aktivni akt;
 public:
-	Image(int s = 0, int v = 0, int bbpp = 0) {
+	Image(int s = 0, int v = 0, int bbpp = 32) {
 		sirina = s;
 		visina = v;
 		brlejera = 0;
@@ -189,12 +189,23 @@ public:
 		else return 0;
 
 	}
-	
+	void dodajAktivan(int novi) {
+		akt.push_back(novi);
+	}
 	void dodajSelekciju(std::string s, pravougaonici pp, bool stanje) {
 		Selekcija* nova = new Selekcija(s, pp);
 		nova->setStanje(stanje);
 		sel.push_back(*nova);
 
+	}
+	void ObrisiSelekciju(std::string poz) {
+		//sel.erase(sel.begin()+poz-1);
+		for (int i = sel.size()-1; i >=0; i--) {
+			if (sel[i].getIme().compare(poz) == 0) {
+				sel.erase(sel.begin()+i);
+			}
+		}
+		//if los index greska
 	}
 	selekcije& getSelekcije() { return sel; }
 	void DodajSloj(std::shared_ptr<Layer>  l, int pozicija) {
@@ -371,8 +382,8 @@ public:
 	int getSirina()const { return sirina; }
 	int getvisina()const { return visina; }
 	int getBrlejera()const { return brlejera; }
-	int getBrBitaPoPixelu()const { return brbitapopixelu; }
-	void setBrBitaPoPixelu(int bb) { brbitapopixelu = bb; }
+	//int getBrBitaPoPixelu()const { return brbitapopixelu; }
+	//void setBrBitaPoPixelu(int bb) { brbitapopixelu = bb; }
 
 private:
 	void kopiraj(const Image& s) {

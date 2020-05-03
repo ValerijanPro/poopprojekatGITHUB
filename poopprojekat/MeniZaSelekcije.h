@@ -17,6 +17,17 @@ public:
 	//	a.clear();
 	}
 	void UcitajSelekciju(Image* i) {
+		std::cout << "Da li zelite da obrisete neku selekciju?" << std::endl;
+		bool odgovor;
+		std::cout << "1. Da" << std::endl;
+		std::cout << "0. Ne" << std::endl;
+		std::cin >> odgovor;
+		if (odgovor) {
+			std::string imesel;
+			std::cout << "Unesite ime selekcije koju zelite da obrisete: " << std::endl;
+			std::cin >> imesel;
+			i->ObrisiSelekciju(imesel);
+		}
 		int dosta = 1;
 		pravougaonici pp;
 		std::cout << "Unesite redom pravougaonike jedne selekcije: "<<std::endl;

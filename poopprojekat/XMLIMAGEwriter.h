@@ -8,20 +8,13 @@ using namespace std;
 using namespace tinyxml2;
 
 class XMLIMAGEwriter {
-
+	aktivni ak;
 public:
 	void ispisiXML(std::string s, Image* image) {
 		ofstream myfile;
 		myfile.open(s+".xml");
 		
-		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite -1 za kraj)" << std::endl;
-		int xx = 10; aktivni ak; ak.clear();
-		while (1) {
-			std::cin >> xx;
-			if (xx == -1) break;
-			ak.push_back(xx);
-		}
-		image->setAkt(ak);
+		
 	//	std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
 
 
@@ -29,19 +22,23 @@ public:
 
 		int visina = image->getvisina();
 		int sirina = image->getSirina();
-		int brbitapopixelu=image->getBrBitaPoPixelu();
+		//int brbitapopixelu=image->getBrBitaPoPixelu();
 
 
 
 		printer.OpenElement("Image");
 		printer.PushAttribute("Visina", visina);
 		printer.PushAttribute("Sirina", sirina);
-		printer.PushAttribute("Brbitapopixelu", brbitapopixelu);
+		//printer.PushAttribute("Brbitapopixelu", brbitapopixelu);
+		printer.OpenElement("Layers");
 		for (auto lejer: image->getLayers())
 		{
+			
 			printer.OpenElement("Layer");
 			printer.PushAttribute("Sirina", sirina );
 			printer.PushAttribute("Visina", visina);
+			int id = lejer.first;
+			printer.PushAttribute("ID", id);
 			//lejer.second->
 			for (int h = 0; h < visina; h++)
 			{
@@ -60,8 +57,16 @@ public:
 			}
 			printer.CloseElement();
 		}
+		printer.CloseElement();
+		printer.OpenElement("Aktivne");
+		for (auto active : image->getAkt()) {
+			printer.OpenElement("StanjeLejera");
 
-
+			printer.PushAttribute("aktivna", active);
+			printer.CloseElement();
+		}
+		printer.CloseElement();
+		printer.OpenElement("Selekcije");
 		for (auto selekcija : image->getSelekcije()) {
 			printer.OpenElement("Selekcija");
 			printer.PushAttribute("Ime", selekcija.getIme().c_str());
@@ -76,19 +81,16 @@ public:
 			}
 			printer.CloseElement();
 		}
-		/*for (auto active : image->getAkt()) {
-			printer.OpenElement("StanjeLejera");
-			
-			printer.PushAttribute("aktivna", active);
-			printer.CloseElement();
-		}*/
-		/*for (auto operacija : image->getOperacije()) {
+		printer.CloseElement();
+
+		printer.OpenElement("Operacije");
+		for (auto operacija : image->getOperacije()) {
 			printer.OpenElement("Operacija");
-			printer.PushAttribute("Ime operacije:", typeid(*operacija).name());
-			printer.PushAttribute("Value:", operacija->getValue());
+			printer.PushAttribute("ImeOperacije", typeid(*operacija).name());
+			printer.PushAttribute("Value", operacija->getValue());
 			printer.CloseElement();
-		}*/
-	
+		}
+		printer.CloseElement();
 
 
 		printer.CloseElement();
@@ -100,5 +102,8 @@ public:
 	//	std::cout << text;
 
 
+	}
+	void ucitajAtribute(aktivni a) {
+		ak = a;
 	}
 };

@@ -13,7 +13,7 @@ public:
 	Image* ucitaj(std::string ImeSlike, std::string ImeOperacija) {
 		Image* slika = new Image();
 		slika->getOperacije().clear();
-		if (SeZavrsavaSa(ImeSlike, ".BMP")) {
+		if (SeZavrsavaSa(ImeSlike, ".BMP") || SeZavrsavaSa(ImeSlike, ".bmp")) {
 		
 			BMPcitac b = BMPcitac();
 
@@ -26,7 +26,7 @@ public:
 			XMLOPERATIONwriter op1;
 			op1.ispisiXML("BOLE", slika);
 		}
-		else if (SeZavrsavaSa(ImeSlike, ".pam")) {
+		else if (SeZavrsavaSa(ImeSlike, ".pam")|| SeZavrsavaSa(ImeSlike, ".PAM")) {
 		
 			PamCitac p = PamCitac();
 			std::shared_ptr<Layer> p1 = p.ucitaj(ImeSlike);
@@ -35,13 +35,14 @@ public:
 			XMLOPERATIONreader op;
 			op.ucitajXML(ImeOperacija, slika);
 		}
-		else if (SeZavrsavaSa(ImeSlike, ".xml")) {
+		else if (SeZavrsavaSa(ImeSlike, ".xml")|| SeZavrsavaSa(ImeSlike, ".XML")) {
 			ImeSlike += ".xml";
 			XMLIMAGEreader xml;
 			//	std::shared_ptr<Layer> p1=xml.ucitajXML(ImeSlike,i);
 		
 			//i->DodajSloj(p1, poz);
-			xml.ucitajXML(ImeSlike, slika, slika->getBrlejera());
+		
+			xml.ucitajXML(ImeSlike, slika);
 			XMLOPERATIONreader op;
 			op.ucitajXML(ImeOperacija, slika);
 		}
