@@ -20,7 +20,7 @@ public:
 
 		std::ifstream binarnifajl;
 
-
+		if (!PostojiFajl(s)) throw GreskaNemaFajla();
 		binarnifajl.open(s.c_str(), std::ios::in | std::ios::binary);
 		PamHeder pamheder=PamHeder();
 		

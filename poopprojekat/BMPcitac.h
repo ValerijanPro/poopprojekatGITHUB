@@ -7,12 +7,14 @@
 #include"DIBzaglavlje.h"
 #include"NizPiksela.h"
 #include"BMPwriter.h"
+
 class BMPcitac {
 public:
 	std::shared_ptr<Layer> ucitaj(std::string s) {
 		std::ifstream binarnifajl;
+		if (!PostojiFajl(s)) throw GreskaNemaFajla();
 		binarnifajl.open(s, std::ios::in | std::ios::binary);
-
+	
 		//rade: RAY, MARBLES,RED SKORO, YEL SKORO,BLU SKORO, BLK, FLAG_B24 
 		// NE: venus, wht, LAND 123,
 	//	std::fstream citac(s, std::ios::binary|std::ios::in);

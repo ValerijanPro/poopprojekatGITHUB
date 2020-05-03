@@ -158,11 +158,11 @@ public:
 		file.close();
 	}
 	void ucitajAtributeMeni() {
-		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite -1 za kraj)" << std::endl;
+		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite vrednost <0 za kraj)" << std::endl;
 		int xx = 10;
 		while (1) {
 			std::cin >> xx;
-			if (xx == -1) break;
+			if (xx <0) break;
 			ak.push_back(xx);
 		}
 

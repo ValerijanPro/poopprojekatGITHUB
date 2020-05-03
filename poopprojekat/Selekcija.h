@@ -14,7 +14,8 @@ class Selekcija {
 	bool aktivna;
 public:
 	Selekcija(std::string s, pravougaonici p) :ime(s){
-
+		niz.clear();
+		aktivna = false;
 		for ( auto i :p) {
 			niz.push_back(i);
 		}

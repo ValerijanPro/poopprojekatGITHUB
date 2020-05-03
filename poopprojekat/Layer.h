@@ -2,8 +2,8 @@
 #include<iostream>
 #include <vector>
 #include"Piksel.h"
-#include"GreskaPostojiKljuc.h"
 
+#include"SveGreske.h"
 
 #pragma endregion
 typedef std::vector<Piksel> nizpiksela;
@@ -36,10 +36,13 @@ public:
 		}
 	}
 	void overwritepixel(int i, int j,Piksel p) {
+		if (i > sirina || j > visina || i<0 || j<0) {
+			throw GreskaIndexMatrice();
+		}
 		m[i][j] = p;
 	}
 	Piksel& getPixel(int i,int j) {
-		if (i > sirina || j > visina) throw GreskaPostojiKljuc();
+		if (i > sirina || j > visina || i < 0 || j < 0) throw GreskaIndexMatrice();
 		return m[i][j];
 	}
 	//matrica& getM() { return m; }

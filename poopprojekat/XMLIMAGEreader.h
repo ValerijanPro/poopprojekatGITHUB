@@ -15,6 +15,7 @@ public:
 
 		XMLDocument doc;
 		//doc.LoadFile("svekrva.xml");
+		if (!PostojiFajl(str)) throw GreskaNemaFajla();
 		doc.LoadFile(str.c_str());
 		auto xmlImage = doc.FirstChildElement("Image");
 		auto xmlLayers = xmlImage->FirstChildElement("Layers");

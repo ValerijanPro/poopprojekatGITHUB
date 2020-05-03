@@ -85,6 +85,9 @@ public:
 			}
 			//i->DodajSloj(p1, i->getBrlejera());
 		}
+		else {
+			throw GreskaFormatFajla();
+		}
 		return i;
 	
 	}

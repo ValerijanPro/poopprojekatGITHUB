@@ -40,7 +40,7 @@ public:
 
 			std::cout << "0. Kraj unosa operacija" << std::endl;
 			std::cin >> input;
-		
+			if (input > 14 || input < 0) throw GreskaNevalidnaOperacija();
 			if (!input) break;
 			i->DodajOperaciju(input);
 		}

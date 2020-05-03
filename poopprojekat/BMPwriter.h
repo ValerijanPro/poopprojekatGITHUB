@@ -25,10 +25,10 @@ public:
 			//gresku napraviti
 		//}
 		
-		auto t1 = std::chrono::high_resolution_clock::now();
+		//auto t1 = std::chrono::high_resolution_clock::now();
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
-		auto t2 = std::chrono::high_resolution_clock::now();
-		auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
+		//auto t2 = std::chrono::high_resolution_clock::now();
+		//auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
 
 	//	std::cout << duration;
 
@@ -154,11 +154,11 @@ public:
 
 	}
 	void ucitajAtributeMeni() {
-		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite -1 za kraj)" << std::endl;
+		std::cout << "Koji lejeri ce ucestovati u formiranju slike? (Napisite vrednost <0 za kraj)" << std::endl;
 		int xx = 10;
 		while (1) {
 			std::cin >> xx;
-			if (xx == -1) break;
+			if (xx <0 ) break;
 			ak.push_back(xx);
 		}
 		

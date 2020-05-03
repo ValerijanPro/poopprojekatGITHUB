@@ -47,16 +47,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GreskaPostojiKljuc.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="NizPiksela.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="korisno.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="operacije.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Add.h">
@@ -190,6 +184,33 @@
     </ClInclude>
     <ClInclude Include="XMLOPERATIONreader.h">
       <Filter>Header Files\XML</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaMeni.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="SveGreske.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaFormatFajla.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaNemaFajla.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaNevalidnaOperacija.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaNepostojecaSelekcija.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaIndexMatrice.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="GreskaPostojiKljuc.h">
+      <Filter>Header Files\GRESKE</Filter>
+    </ClInclude>
+    <ClInclude Include="MojaGreska.h">
+      <Filter>Header Files\GRESKE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -16,10 +16,10 @@ public:
 		std::cout << "Izaberite format u kom zelite da ispisete sliku: " << std::endl;
 		std::cout << "1. BMP" << std::endl;
 		std::cout << "2. PAM" << std::endl;
-		std::cout << "3. Image" << std::endl;
+	
 		std::cout << " 0. Nazad na Glavni Meni" << std::endl;
 		std::cin >> format;
-		if (format !=1 && format!=2 && format!=3) return; // THROW GRESKA
+		if (format !=1 && format!=2 ) throw GreskaFormatFajla() ; // THROW GRESKA
 		std::cout << "Unesite ime izlaznog fajla bez ekstenzije: " << std::endl;
 		std::cin >> imeFajla;
 		if (format == 1) {

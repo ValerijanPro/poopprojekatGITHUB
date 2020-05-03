@@ -9,6 +9,7 @@
 #include"Selekcija.h"
 #include"Timotije.h"
 #include"korisno.h"
+#include"SveGreske.h"
 //typedef std::vector<Layer*> mapa;
 typedef std::map<int, std::shared_ptr<Layer>> mapa;
 typedef std::vector<Selekcija> selekcije;
@@ -111,6 +112,9 @@ public:
 			
 			operacije.push_back(std::make_shared<SubInvert>(value)); 
 		}
+		else {
+			throw GreskaNevalidnaOperacija();
+		}
 	}
 	int DodajOperaciju(int input) {
 		std::shared_ptr<ioperation> p1 = std::make_shared<Absolute>(0);
@@ -193,17 +197,36 @@ public:
 		akt.push_back(novi);
 	}
 	void dodajSelekciju(std::string s, pravougaonici pp, bool stanje) {
-		Selekcija* nova = new Selekcija(s, pp);
-		nova->setStanje(stanje);
-		sel.push_back(*nova);
+
+		bool VecPostoji = false;
+		for (int i = sel.size() - 1; i >= 0; i--) {
+			if (sel[i].getIme().compare(s) == 0) {
+				
+				VecPostoji = true;
+			}
+		}
+		if (!VecPostoji) {
+			Selekcija* nova = new Selekcija(s, pp);
+			nova->setStanje(stanje);
+			sel.push_back(*nova);
+		}
+		else {
+			throw GreskaNepostojecaSelekcija("Selekcija sa datim imenom koju dodajete vec postoji");
+		}
+	
 
 	}
 	void ObrisiSelekciju(std::string poz) {
 		//sel.erase(sel.begin()+poz-1);
+		bool obrisan=false;
 		for (int i = sel.size()-1; i >=0; i--) {
 			if (sel[i].getIme().compare(poz) == 0) {
 				sel.erase(sel.begin()+i);
+				obrisan = true;
 			}
+		}
+		if (!obrisan) {
+			throw GreskaNepostojecaSelekcija();
 		}
 		//if los index greska
 	}

@@ -14,6 +14,7 @@ public:
 
 		XMLDocument doc;
 		//doc.LoadFile("svekrva.xml");
+		if (!PostojiFajl(str)) throw GreskaNemaFajla();
 		doc.LoadFile(str.c_str());
 		auto xmlOperation = doc.FirstChildElement("Operacija");
 		while (xmlOperation != nullptr) {

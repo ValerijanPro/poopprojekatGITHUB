@@ -1,10 +1,11 @@
 #pragma once
 #include<iostream>
-class GreskaPostojiKljuc :public  std::exception{
+#include"MojaGreska.h"
+class GreskaPostojiKljuc :public  std::exception {
 	std::string r = "Dodavanje nije moguce";
-public:GreskaPostojiKljuc(std::string raz) :r(raz) {}
+public:GreskaPostojiKljuc(std::string raz) :r(raz){}
 	   GreskaPostojiKljuc() = default;
-	   const char* what()const override
+	   virtual const char* what()const noexcept
 	   {
 		   return r.c_str();
 	   }

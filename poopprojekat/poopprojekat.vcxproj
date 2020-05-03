@@ -141,6 +141,12 @@
     <ClInclude Include="Div.h" />
     <ClInclude Include="DivInvert.h" />
     <ClInclude Include="EksportXMLmeni.h" />
+    <ClInclude Include="GreskaFormatFajla.h" />
+    <ClInclude Include="GreskaIndexMatrice.h" />
+    <ClInclude Include="GreskaMeni.h" />
+    <ClInclude Include="GreskaNemaFajla.h" />
+    <ClInclude Include="GreskaNepostojecaSelekcija.h" />
+    <ClInclude Include="GreskaNevalidnaOperacija.h" />
     <ClInclude Include="GreskaPostojiKljuc.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inverzija.h" />
@@ -154,10 +160,10 @@
     <ClInclude Include="MeniZaOperacije.h" />
     <ClInclude Include="MeniZaSelekcije.h" />
     <ClInclude Include="Min.h" />
+    <ClInclude Include="MojaGreska.h" />
     <ClInclude Include="Mul.h" />
     <ClInclude Include="NizPiksela.h" />
     <ClInclude Include="NoviPiksel.h" />
-    <ClInclude Include="operacije.h" />
     <ClInclude Include="pamcitac.h" />
     <ClInclude Include="pamheder.h" />
     <ClInclude Include="pamwriter.h" />
@@ -169,6 +175,7 @@
     <ClInclude Include="Siva.h" />
     <ClInclude Include="Sub.h" />
     <ClInclude Include="SubInvert.h" />
+    <ClInclude Include="SveGreske.h" />
     <ClInclude Include="Timotije.h" />
     <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="UcitavanjeSlikeMeni.h" />

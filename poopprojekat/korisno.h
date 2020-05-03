@@ -1,4 +1,5 @@
 #pragma once
+#define _CRT_SECURE_NO_WARNINGS
 #include<regex>
 #include<cmath>
 
@@ -15,6 +16,11 @@ bool SeZavrsavaSa(std::string const& fullString, std::string const& ending) {
 	else {
 		return false;
 	}
+}
+
+inline bool PostojiFajl(const std::string& name) {
+	std::ifstream f(name.c_str());
+	return f.good();
 }
 
 

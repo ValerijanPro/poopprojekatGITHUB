@@ -13,6 +13,7 @@ class Pravougaonik {
 public:
 	Pravougaonik(int xx,int yy, int sir, int vis):x(xx),y(yy),sirina(sir),visina(vis){}
 	bool UPravougaoniku(int xkoordinata, int ykoordinata) {
+		if (xkoordinata < 0 || ykoordinata < 0) throw GreskaIndexMatrice("Koordinate pravougaonika nisu validne");
 		if (xkoordinata >= x && xkoordinata <= (x + sirina)) {
 			if (ykoordinata >=y && ykoordinata <= (y + visina)) {
 				return 1;
