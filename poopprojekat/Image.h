@@ -23,6 +23,7 @@ class Image {
 	selekcije sel;
 	op operacije;
 	aktivni akt;
+	bool medijana;
 public:
 	Image(int s = 0, int v = 0, int bbpp = 32) {
 		sirina = s;
@@ -30,7 +31,7 @@ public:
 		brlejera = 0;
 		brbitapopixelu = bbpp;
 		sel.clear();
-
+		medijana = false;
 		operacije.clear();
 		dodajPush();
 	}
@@ -39,6 +40,8 @@ public:
 	// 2. funkcija za dodavanje lejera, i ako je sirina i visina lejera veca od image sir i visine, onda
 	// prosiriti sirinu i visinu u svim lejerima
 	// tj ako dodas lejer koji je veci od ostalih, svi ostali moraju da porastu
+	bool getMedijana()const { return medijana; }
+	void setMedijana(bool a) { medijana = a; }
 	void ObrisiLejer(int pozicija) {
 		if (layers.count(pozicija) == 0)
 			return;
@@ -189,7 +192,10 @@ public:
 			std::cin >> broj;
 			operacije.push_back(std::make_shared<SubInvert>(broj)); return 1;
 		}
-
+		else if (input == 15) {
+			setMedijana(true);
+			return 1;
+		}
 		else return 0;
 
 	}
@@ -297,7 +303,7 @@ public:
 				aktivniLejeri.push_back(i.second);
 			}
 		}
-
+		if (aktivniLejeri.size() == 0) return lejer;
 		for (int i = 0; i < sirina; i++) {
 			for (int j = 0; j < visina; j++) {
 				Piksel piksel = aktivniLejeri[0]->getPixel(i, j);

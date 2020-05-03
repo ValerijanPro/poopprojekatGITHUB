@@ -296,8 +296,8 @@ public:
 	bool normalnaMedijana(int x,int y) {
 		return (x != 0 && y != 0 && x!=sirina-1 && y!=visina-1);
 	}
-	Layer* IzvrsiMedijanu() {
-		Layer* nova = new Layer(*this);
+	std::shared_ptr<Layer> IzvrsiMedijanu() {
+		std::shared_ptr<Layer> nova = std::make_shared <Layer>(*this);
 		
 		for (int i = 0; i < sirina; i++) {
 			for (int j = 0; j < visina; j++) {

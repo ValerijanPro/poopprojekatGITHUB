@@ -84,12 +84,14 @@ public:
 		printer.CloseElement();
 
 		printer.OpenElement("Operacije");
+		printer.PushAttribute("Medijana", image->getMedijana());
 		for (auto operacija : image->getOperacije()) {
 			printer.OpenElement("Operacija");
 			printer.PushAttribute("ImeOperacije", typeid(*operacija).name());
 			printer.PushAttribute("Value", operacija->getValue());
 			printer.CloseElement();
 		}
+
 		printer.CloseElement();
 
 

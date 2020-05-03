@@ -80,6 +80,10 @@ public:
 		}
 		
 		auto xmlOperacije = xmlImage->FirstChildElement("Operacije");
+		bool medijana;
+		medijana = xmlOperacije->FindAttribute("Medijana");
+		i->setMedijana(medijana);
+		
 		auto xmlOperation = xmlOperacije->FirstChildElement("Operacija");
 		while (xmlOperation != nullptr) {
 			std::string ImeOperacije = xmlOperation->FindAttribute("ImeOperacije")->Value();

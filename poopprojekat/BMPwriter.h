@@ -17,6 +17,7 @@ class BMPwriter {
 	aktivni ak;
 	bool bojenje;
 	int rr = 0, gg = 0, bb = 0, aa = 0;
+	
 public:
 	 //TODO: ODVOJENO OPERACIJE, NE TREBA U ISTOM FAJLU U KOME JE IMAGE
 	void upisi(Image* image,std::string ImeFajla) {
@@ -27,6 +28,7 @@ public:
 		
 		//auto t1 = std::chrono::high_resolution_clock::now();
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
+		if (image->getMedijana())lejer=lejer->IzvrsiMedijanu();
 		//auto t2 = std::chrono::high_resolution_clock::now();
 		//auto duration = std::chrono::duration_cast<std::chrono::microseconds>(t2 - t1).count();
 

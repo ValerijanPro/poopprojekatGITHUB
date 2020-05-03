@@ -20,7 +20,8 @@ public:
 
 		XMLPrinter printer;
 
-	
+		printer.OpenElement("Operacije");
+		printer.PushAttribute("Medijana", image->getMedijana());
 		for (auto operacija : image->getOperacije()) {
 			printer.OpenElement("Operacija");
 			printer.PushAttribute("ImeOperacije", typeid(*operacija).name());
@@ -28,7 +29,7 @@ public:
 			printer.CloseElement();
 		}
 
-
+		printer.CloseElement();
 
 		//printer.CloseElement();
 

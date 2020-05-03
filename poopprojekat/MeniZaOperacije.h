@@ -36,11 +36,11 @@ public:
 			std::cout << "12. siva" << std::endl;
 			std::cout << "13. sub" << std::endl;
 			std::cout << "14. subInvert" << std::endl;
-
+			std::cout << "15. Medijana" << std::endl;
 
 			std::cout << "0. Kraj unosa operacija" << std::endl;
 			std::cin >> input;
-			if (input > 14 || input < 0) throw GreskaNevalidnaOperacija();
+			if (input > 15 || input < 0) throw GreskaNevalidnaOperacija();
 			if (!input) break;
 			i->DodajOperaciju(input);
 		}

@@ -35,6 +35,7 @@ public:
 		}
 
 		std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);
+		if (image->getMedijana())lejer = lejer->IzvrsiMedijanu();
 		//DIBzaglavlje1 dibzaglavlje = DIBzaglavlje1(lejer->getSirina(), lejer->getvisina(), lejer->getSirina() * lejer->getvisina());
 		PamHeder pamheder = PamHeder(lejer->getSirina(), lejer->getvisina());
 		//BMPzaglavlje1 bmpzaglavlje = BMPzaglavlje1(lejer->getSirina() * lejer->getvisina() * 3 + 122);
@@ -45,7 +46,7 @@ public:
 		ispisiString(&file, pamheder.maxval);
 		ispisiString(&file, pamheder.tupltype); 
 		ispisiString(&file, pamheder.endhdr);
-		Layer* novi = (lejer->IzvrsiMedijanu());
+	//	Layer* novi = (lejer->IzvrsiMedijanu());
 		//lejer = novi;
 
 		
