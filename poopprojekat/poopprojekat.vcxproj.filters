@@ -47,9 +47,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="NizPiksela.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="korisno.h">
       <Filter>Header Files</Filter>
     </ClInclude>

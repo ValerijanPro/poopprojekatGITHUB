@@ -6,7 +6,7 @@
 #include <vector>
 #include"BMPzaglavlje.h"
 #include"DIBzaglavlje.h"
-#include"NizPiksela.h"
+//#include"NizPiksela.h"
 #include"Image.h"
 #include"Selekcija.h"
 #include"Pravougaonik.h"

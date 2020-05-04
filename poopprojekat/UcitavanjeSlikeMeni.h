@@ -29,7 +29,9 @@ public:
 	Image* UcitajSliku(Image* i) {
 		//Image* i=new Image();
 		std::cout << "Unesite ime slike, bez ekstenzije" << std::endl;
-		std::cin >> ImeSlike;
+		cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		std::getline(std::cin, ImeSlike);
+		//std::cin >> ImeSlike;
 		if (format == 1) {
 			ImeSlike += ".bmp";
 			b = BMPcitac();

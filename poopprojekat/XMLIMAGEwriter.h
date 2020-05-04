@@ -12,7 +12,7 @@ class XMLIMAGEwriter {
 public:
 	void ispisiXML(std::string s, Image* image) {
 		ofstream myfile;
-		myfile.open(s+".xml");
+		myfile.open(s);
 		
 		
 	//	std::shared_ptr<Layer>  lejer = image->konstruisiFinalniLayer(ak);

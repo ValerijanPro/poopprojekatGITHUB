@@ -13,7 +13,7 @@ class XMLOPERATIONwriter {
 public:
 	void ispisiXML(std::string s, Image* image) {
 		ofstream myfile;
-		myfile.open(s + ".fun");
+		myfile.open(s);
 
 		
 

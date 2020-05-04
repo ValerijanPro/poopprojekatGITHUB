@@ -5,7 +5,7 @@
 #include <vector>
 #include"BMPzaglavlje.h"
 #include"DIBzaglavlje.h"
-#include"NizPiksela.h"
+//#include"NizPiksela.h"
 #include"BMPwriter.h"
 
 class BMPcitac {
@@ -15,12 +15,7 @@ public:
 		if (!PostojiFajl(s)) throw GreskaNemaFajla();
 		binarnifajl.open(s, std::ios::in | std::ios::binary);
 	
-		//rade: RAY, MARBLES,RED SKORO, YEL SKORO,BLU SKORO, BLK, FLAG_B24 
-		// NE: venus, wht, LAND 123,
-	//	std::fstream citac(s, std::ios::binary|std::ios::in);
-	//	if (!citac) {
-	//		return;//greska
-	//	}
+	
 		BMPzaglavlje1 bmpzaglavlje;
 		binarnifajl.read((char*)&bmpzaglavlje, sizeof(bmpzaglavlje));
 
@@ -53,11 +48,11 @@ public:
 					l->overwritepixel(i, j, Piksel(red, green, blue, 0, opacity));
 
 				}
-				while ((i % 4) != 0) {
+				/*while ((i % 4) != 0) {
 					char temp;
 					binarnifajl.read((char*)& temp, sizeof(temp));
 					i++;
-				}
+				}*/
 
 				//jos kolko padinga ima
 			}
@@ -89,16 +84,6 @@ public:
 			}
 		}
 		return l;
-		//BMPwriter bmpwriter;
-		//Image *i = new Image(l->getSirina(), l->getvisina(), 1,dibzaglavlje.brBitaPoPixelu);
-		////Image* i = (Image*)malloc(sizeof(Image*));
-
-		////Layer* lej = (Layer*)malloc(sizeof(Layer));
-		////lej = &l;
-		//i->DodajSloj(l, 0);
-		//Layer* lejer = i->konstruisiFinalniLayer();
-		//return i;
-
-	//	bmpwriter.upisi(&i);
+		
 	}
 };

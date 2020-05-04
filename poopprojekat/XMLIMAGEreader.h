@@ -63,7 +63,7 @@ public:
 		while (xmlSelekcija != nullptr) {
 			auto xmlPravougaonik = xmlSelekcija->FirstChildElement("Pravougaonik");
 			std::string ime; bool stanje;
-			ime = xmlSelekcija->FindAttribute("Ime")->Name();
+			ime = xmlSelekcija->FindAttribute("Ime")->Value();
 			stanje = xmlSelekcija->FindAttribute("Aktivna")->BoolValue();
 			pravougaonici pp;
 			pp.clear();

@@ -13,7 +13,7 @@ public:
 
 
 		XMLDocument doc;
-		//doc.LoadFile("svekrva.xml");
+		 
 		if (!PostojiFajl(str)) throw GreskaNemaFajla();
 		doc.LoadFile(str.c_str());
 		auto xmlOperacije = doc.FirstChildElement("Operacije");

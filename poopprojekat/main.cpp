@@ -19,21 +19,14 @@
 #include"SveGreske.h"
 void main(int argc, char* argv[]) {
 	Image* slika = new Image();
-	//std::cout << argc << std::endl;
+	
 	if (argc != 1) {
-		
-		//std::cout << argv[0]<<std::endl;
+
 		std::string imefajlaSlike, imefajlaOperacija;
 		imefajlaSlike = argv[1];
 
-		//std::cout << argv[1]<<std::endl;
 		imefajlaOperacija = argv[2];
-	//	imefajlaOperacija = "svekrva.fun";
-	//	std::cout << argv[2]<<std::endl;
-		//imefajlaSlike = "RAY - Copy.bmp";
-		//imefajlaSlike = "C:\\Users\\Valja\\source\\repos\\poopprojekat\\poopprojekatGITHUB\\poopprojekat\\RAY - Copy.BMP";
-		//imefajlaOperacija = "svekrva.fun";
-		
+
 		CMDinput cmd;
 		slika->getOperacije().clear();
 		slika=cmd.ucitaj(imefajlaSlike, imefajlaOperacija);
@@ -59,7 +52,7 @@ void main(int argc, char* argv[]) {
 			xml.ucitajAtribute(slika->getAkt());
 			xml.ispisiXML(imefajlaSlike, slika);
 		}
-		//std::cout << "Kraj kraja" << std::endl;
+		
 		return;
 	}
 	MainMeni mm = MainMeni();
@@ -148,25 +141,6 @@ void main(int argc, char* argv[]) {
 
 
 
-	PamCitac p = PamCitac();
-	//p.ucitaj("p7_3x2_12b_3d.pam");
-	p.ucitaj("IMG_20190809_154608083.pam");
-	BMPcitac b=BMPcitac();
-
-	b.ucitaj("RAY.BMP");
-	//BLK,WHT,VENUS,LAND,LAND2, BLU SKORO
-	 stek s;
-	 NoviPiksel p1 = NoviPiksel(3, 3, 3);
-	 NoviPiksel p2 = NoviPiksel(127, 127, 127);
-	 NoviPiksel p3 = NoviPiksel(255, 255, 255);
-	
-	 argumenti ar = { p1};
-	 std::vector<ioperation*> niz;
-	niz = {&Push(0),&Pow(2),&Add(6),&Div(15),&Siva()};
-	for (auto i : niz) {
-		i->run(s, ar);
-	}
-	NoviPiksel p4 = s.top();
 
 	return;
 	

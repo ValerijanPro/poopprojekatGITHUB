@@ -5,7 +5,7 @@
 #include <vector>
 #include"BMPzaglavlje.h"
 #include"DIBzaglavlje.h"
-#include"NizPiksela.h"
+//#include"NizPiksela.h"
 #include"BMPwriter.h"
 #include"XMLOPERATIONreader.h"
 class CMDinput {
@@ -36,13 +36,15 @@ public:
 			op.ucitajXML(ImeOperacija, slika);
 		}
 		else if (SeZavrsavaSa(ImeSlike, ".xml")|| SeZavrsavaSa(ImeSlike, ".XML")) {
-			ImeSlike += ".xml";
+			//ImeSlike += ".xml";
 			XMLIMAGEreader xml;
 			//	std::shared_ptr<Layer> p1=xml.ucitajXML(ImeSlike,i);
 		
 			//i->DodajSloj(p1, poz);
 		
 			xml.ucitajXML(ImeSlike, slika);
+			slika->getOperacije().clear();
+			slika->getSelekcije().clear();
 			XMLOPERATIONreader op;
 			op.ucitajXML(ImeOperacija, slika);
 		}
